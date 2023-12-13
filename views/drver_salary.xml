@@ -1,0 +1,48 @@
+<odoo>
+    <record model="ir.ui.view" id="driver_salary_from_view">
+        <field name="name">driver.salary.from.view</field>
+        <field name="model">driver.salary</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="driver_salary_tree_view">
+        <field name="name">driver.salary.tree.view</field>
+        <field name="model">driver.salary</field>
+        <field name="arch" type="xml">
+            <tree>
+            </tree>
+        </field>
+    </record>
+
+    <record id="driver_salary_action" model="ir.actions.act_window">
+        <field name="name">Driver Salary</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">driver.salary</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <menuitem id="maintenance_menu"
+              name="Maintenance"
+              parent="car_rental_menu"
+              sequence="10"/>
+
+    <menuitem id="maintenance_sub_menu"
+              name="Driver Salary"
+              parent="maintenance_menu"
+              action="driver_salary_action"
+              sequence="10"/>
+
+</odoo>

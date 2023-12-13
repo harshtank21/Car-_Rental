@@ -1,0 +1,48 @@
+<odoo>
+    <record model="ir.ui.view" id="offline_transaction_from_view">
+        <field name="name">offline.transaction.from.view</field>
+        <field name="model">offline.transaction</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="offline_transaction_tree_view">
+        <field name="name">offline.transaction.tree.view</field>
+        <field name="model">offline.transaction</field>
+        <field name="arch" type="xml">
+            <tree>
+            </tree>
+        </field>
+    </record>
+
+    <record id="offline_transaction_action" model="ir.actions.act_window">
+        <field name="name">Driver Salary</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">offline.transaction</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <menuitem id="finance_management_menu"
+              name="Finance Management"
+              parent="car_rental_menu"
+              sequence="10"/>
+
+    <menuitem id="offline_transaction_sub_menu"
+              name="Offline Transaction"
+              parent="finance_management_menu"
+              action="offline_transaction_action"
+              sequence="10"/>
+
+</odoo>
