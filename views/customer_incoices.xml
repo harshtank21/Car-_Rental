@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="customer_invoicest_from_view">
+        <field name="name">customer.invoices.from.view</field>
+        <field name="model">customer.invoices</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                    </group>
+                    <group>
+                        <group>
+                        </group>
+                        <group>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="customer_invoicest_tree_view">
+        <field name="name">customer.invoices.tree.view</field>
+        <field name="model">customer.invoices</field>
+        <field name="arch" type="xml">
+            <tree>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="customer_invoices_action" model="ir.actions.act_window">
+        <field name="name">Customer Invoices</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">customer.invoices</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem id="customer_invoices_menu"
+              name="Customer Invoices"
+              parent="customer_menu"
+              action="customer_invoices_action"
+              sequence="20"/>
+</odoo>

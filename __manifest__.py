@@ -1,5 +1,5 @@
 {
-    "name" : "sports club",
+    "name" : "Car Rental",
     'version' : '16.0.1.0.0',
     'summary': 'Invoices & Payments',
     'sequence': 10,
@@ -20,7 +20,9 @@ You could use this simplified accounting in case you work with an (external) acc
         'views/New_order.xml',
         'views/drver_salary.xml',
         'views/customers.xml',
-        'views/cars_management.xml'
+        'views/cars_management.xml',
+        'views/menu.xml',
+        'views/customer_incoices.xml'
 
 
 

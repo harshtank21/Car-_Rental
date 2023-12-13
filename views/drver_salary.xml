@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record model="ir.ui.view" id="driver_salary_from_view">
         <field name="name">driver.salary.from.view</field>
@@ -32,17 +33,5 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-
-
-    <menuitem id="maintenance_menu"
-              name="Maintenance"
-              parent="car_rental_menu"
-              sequence="10"/>
-
-    <menuitem id="maintenance_sub_menu"
-              name="Driver Salary"
-              parent="maintenance_menu"
-              action="driver_salary_action"
-              sequence="10"/>
 
 </odoo>

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record model="ir.ui.view" id="offline_transaction_from_view">
         <field name="name">offline.transaction.from.view</field>
@@ -32,17 +33,5 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-
-
-    <menuitem id="finance_management_menu"
-              name="Finance Management"
-              parent="car_rental_menu"
-              sequence="10"/>
-
-    <menuitem id="offline_transaction_sub_menu"
-              name="Offline Transaction"
-              parent="finance_management_menu"
-              action="offline_transaction_action"
-              sequence="10"/>
 
 </odoo>

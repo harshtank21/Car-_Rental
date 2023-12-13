@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record model="ir.ui.view" id="new_order_from_view">
         <field name="name">new.order.from.view</field>
@@ -33,15 +34,8 @@
     </record>
 
 
-    <menuitem id="order_menu"
-              name="Order"
-              parent="car_rental_menu"
-              sequence="10"/>
 
-    <menuitem id="customer_sub_menu"
-              name="New Order"
-              parent="order_menu"
-              action="new_order_action"
-              sequence="10"/>
+
+
 
 </odoo>

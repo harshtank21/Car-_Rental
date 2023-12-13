@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record model="ir.ui.view" id="car_management_from_view">
         <field name="name">car.management.from.view</field>
@@ -6,9 +7,18 @@
             <form>
                 <sheet>
                     <group>
+                        <field name="id"/>
+                        <field name="img" widget="image" class="oe_avatar"/>
+                    </group>
+                    <group>
                         <group>
+                            <field name="name"/>
+                            <field name="rent"/>
                         </group>
                         <group>
+                            <field name="speed"/>
+                            <field name="avg"/>
+                            <field name="type"/>
                         </group>
                     </group>
                 </sheet>
@@ -21,6 +31,10 @@
         <field name="model">car.management</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="rent"/>
             </tree>
         </field>
     </record>
@@ -29,22 +43,8 @@
         <field name="name">Car Management</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">car.management</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,kanban</field>
     </record>
-
-
-
-    <menuitem id="car_management_menu"
-              name="Car Management"
-              parent="car_rental_menu"
-              sequence="10"/>
-
-    <menuitem id="car_details_sub_menu"
-              name="cars Details"
-              parent="car_management_menu"
-              action="car_management_action"
-              sequence="10"/>
-
 </odoo>
 
 
