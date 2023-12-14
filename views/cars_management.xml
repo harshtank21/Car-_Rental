@@ -6,10 +6,8 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group>
-                        <field name="id"/>
-                        <field name="img" widget="image" class="oe_avatar"/>
-                    </group>
+                    <h1><field name="squ"/></h1>
+                    <field name="img" widget="image" class="oe_avatar"/>
                     <group>
                         <group>
                             <field name="name"/>
@@ -31,7 +29,7 @@
         <field name="model">car.management</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="id"/>
+                <field name="squ"/>
                 <field name="name"/>
                 <field name="type"/>
                 <field name="rent"/>

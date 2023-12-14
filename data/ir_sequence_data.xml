@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="seq_one_sal" model="ir.sequence">
+        <field name="name">CAR RENTAL</field>
+        <field name="code">my.sequence.code</field>
+        <field name="prefix">CAR</field>
+        <field name="padding">4</field>
+        <field name="company_id" eval="False"/>
+    </record>
+    <record id="cust_mer" model="ir.sequence">
+        <field name="name">CAR RENTAL</field>
+        <field name="code">my.sequence</field>
+        <field name="prefix">NO</field>
+        <field name="padding">6</field>
+        <field name="company_id" eval="False"/>
+    </record>
+
+</odoo>
