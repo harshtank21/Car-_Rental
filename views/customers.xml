@@ -7,6 +7,7 @@
             <form>
                 <header>
                     <button class="oe_stat_button" type="object" name="update_customer_invoices" string="Update customer bils "/>
+                    <button class="oe_stat_button" type="object" name="update_order" string="Update Order "/>
                 </header>
                 <sheet>
                     <h1>
@@ -19,6 +20,7 @@
                             <field name="star_date"/>
                             <field name="licence"/>
                             <field name="licence_attach"/>
+                            <field name="phone" widget="phone"/>
                         </group>
                         <group>
                             <field name="end_date"/>
@@ -27,7 +29,6 @@
                             <field name="Identity_img"/>
                             <field name="car_booking"/>
                             <field name="email" widget="email"/>
-
                         </group>
                     </group>
                 </sheet>
@@ -54,6 +55,4 @@
         <field name="res_model">customer</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-
 </odoo>

@@ -8,6 +8,10 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="name"/>
+                            <!--                <field name="date"/>-->
+                            <field name="month"/>
+                            <field name="year"/>
                         </group>
                         <group>
                         </group>
@@ -22,12 +26,16 @@
         <field name="model">offline.transaction</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="name"/>
+                <!--                <field name="date"/>-->
+                <field name="month"/>
+                <field name="year"/>
             </tree>
         </field>
     </record>
 
     <record id="offline_transaction_action" model="ir.actions.act_window">
-        <field name="name">Driver Salary</field>
+        <field name="name">offline</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">offline.transaction</field>
         <field name="view_mode">tree,form</field>

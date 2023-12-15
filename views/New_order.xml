@@ -8,10 +8,24 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="name"/>
+                            <field name="address"/>
+                            <field name="star_date"/>
+                            <field name="end_date"/>
+                            <field name="rent"/>
                         </group>
                         <group>
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="status"/>
+                            <field name="driver"/>
+                            <field name="cars"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="CAR" name="order_car">
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -22,6 +36,11 @@
         <field name="model">new.order</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="name"/>
+                <field name="star_date"/>
+                <field name="end_date"/>
+                <field name="status"/>
+
             </tree>
         </field>
     </record>
@@ -32,10 +51,5 @@
         <field name="res_model">new.order</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-
-
-
-
 
 </odoo>

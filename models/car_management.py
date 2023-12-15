@@ -12,11 +12,11 @@ class Car_Management(models.Model):
     speed = fields.Integer("Speed")
     rent = fields.Integer("Rent")
     type = fields.Selection([("suv", "SUV"), ("hatchback", "Hatchback"), ("sedan", "Sedan"), ("minivan", "Minivan"),
-                             ("convertible", "convertible"), ("Sports car", "Sports car")], string="Type")
+                             ("convertible", "convertible"), ("Sports car", "Sports car"),("luxurious","Luxurious")], string="Type")
     squ = fields.Char(string="squ" ,readonly=True)
 
 
-    # @api.model
-    # def create(self, vals):
-    #     vals['squ'] = self.env['ir.sequence'].next_by_code('my.sequence.code')
-    #     return super(Car_Management, self).create(vals)
+    @api.model
+    def create(self, vals):
+        vals['squ'] = self.env['ir.sequence'].next_by_code('my.sequence.code')
+        return super(Car_Management, self).create(vals)
