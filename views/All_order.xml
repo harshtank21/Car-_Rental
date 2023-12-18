@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="new_order_from_view">
+    <record model="ir.ui.view" id="all_order_from_view">
         <field name="name">new.order.from.view</field>
-        <field name="model">new.order</field>
+        <field name="model">all.order</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
@@ -31,9 +31,9 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="new_order_tree_view">
+    <record model="ir.ui.view" id="all_order_tree_view">
         <field name="name">new.order.tree.view</field>
-        <field name="model">new.order</field>
+        <field name="model">all.order</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
@@ -45,11 +45,15 @@
         </field>
     </record>
 
-    <record id="new_order_action" model="ir.actions.act_window">
-        <field name="name">New Order</field>
+    <record id="all_order_action" model="ir.actions.act_window">
+        <field name="name">All Order</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">new.order</field>
+        <field name="res_model">all.order</field>
         <field name="view_mode">tree,form</field>
     </record>
-
+    <menuitem id="customer_sub_menu_order"
+              name="All Order"
+              parent="order_menu"
+              action="all_order_action"
+              sequence="10"/>
 </odoo>

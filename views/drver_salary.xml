@@ -40,6 +40,10 @@
         <field name="res_model">driver.salary</field>
         <field name="view_mode">tree,form</field>
     </record>
-
+    <menuitem id="maintenance_sub_menu"
+              name="Driver Salary"
+              parent="maintenance_menu"
+              action="driver_salary_action"
+              sequence="10"/>
 
 </odoo>

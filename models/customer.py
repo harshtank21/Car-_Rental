@@ -19,6 +19,7 @@ class Customer(models.Model):
                                 required=True, string="Identity")
     Identity_img = fields.Binary(string="Identity Attach")
     squ = fields.Char(string="squ", readonly=True)
+    exm = fields.Char(string="exm")
     car_booking = fields.Many2one("car.management", string="Cars")
     rent = fields.Integer(string="Rent", related="car_booking.rent")
 
@@ -37,17 +38,48 @@ class Customer(models.Model):
         })
 
     def update_order(self):
-        self.env["new.order"].create({
-            "name": self.name,
-            "address": self.address,
-            "star_date": self.star_date,
-            "rent": self.rent,
-            "end_date": self.end_date,
-            "phone": self.phone,
-            "email": self.email
-        })
+        today=date.today()
+        if(self.star_date >= today):
+            self.env["all.order"].create({
+                "name": self.name,
+                "address": self.address,
+                "star_date": self.star_date,
+                "rent": self.rent,
+                "end_date": self.end_date,
+                "phone": self.phone,
+                "email": self.email
+            })
+            self.env["advanc.order"].create({
+                "name": self.name,
+                "address": self.address,
+                "star_date": self.star_date,
+                "rent": self.rent,
+                "end_date": self.end_date,
+                "phone": self.phone,
+                "email": self.email
+            })
+        elif (self.star_date <  today and self.end_date > today):
+            self.env["all.order"].create({
+                    "name": self.name,
+                    "address": self.address,
+                    "star_date": self.star_date,
+                    "rent": self.rent,
+                    "end_date": self.end_date,
+                    "phone": self.phone,
+                    "email": self.email
+                })
+            self.env["running.order"].create({
+                "name": self.name,
+                "address": self.address,
+                "star_date": self.star_date,
+                "rent": self.rent,
+                "end_date": self.end_date,
+                "phone": self.phone,
+                "email": self.email
+            })
 
     @api.model
     def create(self, vals):
         vals['squ'] = self.env['ir.sequence'].next_by_code('my.sequence')
         return super(Customer, self).create(vals)
+

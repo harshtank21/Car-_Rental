@@ -6,7 +6,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button class="oe_stat_button" type="object" name="update_customer_invoices" string="Update customer bils "/>
+                    <button class="oe_stat_button" type="object" name="update_customer_invoices"
+                            string="Update customer bils "/>
                     <button class="oe_stat_button" type="object" name="update_order" string="Update Order "/>
                 </header>
                 <sheet>
@@ -53,6 +54,14 @@
         <field name="name">customer</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">customer</field>
+        <field name="context">{"default_identity":"pancard"}</field>
+        <field name="context">{"default_licence":"gj11yyjhjhgjrd"}</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+    <menuitem id="customer_sub_menu"
+              name="Customer"
+              parent="customer_menu"
+              action="customer_action"
+              sequence="10"/>
 </odoo>

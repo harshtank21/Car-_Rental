@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="running_order_from_view">
+        <field name="name">running.order.from.view</field>
+        <field name="model">running.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="address"/>
+                            <field name="star_date"/>
+                            <field name="end_date"/>
+                            <field name="rent"/>
+                        </group>
+                        <group>
+                            <field name="email" widget="email"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="driver"/>
+                            <field name="cars"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="CAR" name="order_car">
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="running_order_tree_view">
+        <field name="name">running.order.tree.view</field>
+        <field name="model">running.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="star_date"/>
+                <field name="end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="running_order_action" model="ir.actions.act_window">
+        <field name="name">Running Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">running.order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="running_sub_menu_order"
+              name="Running Order"
+              parent="order_menu"
+              action="running_order_action"
+              sequence="30"/>
+</odoo>

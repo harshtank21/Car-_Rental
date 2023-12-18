@@ -3,7 +3,7 @@ from datetime import date
 
 
 class New_Order(models.Model):
-    _name = "new.order"
+    _name = "all.order"
     _description = "Car Rental"
 
     name = fields.Char(string="Name", required=True)

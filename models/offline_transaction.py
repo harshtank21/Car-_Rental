@@ -8,17 +8,25 @@ class Offline_Transaction(models.Model):
 
 
     name=fields.Char("Name",compute="_compute_name")
-    month=fields.Integer("Month",compute="_compute_month")
-    day=fields.Char("Day")
-    year=fields.Char("Year")
+    month_income=fields.Integer("Month income")
+    month=fields.Selection([("1","January"),("2","February"),("3","March"),("4","April"),("5","May"),("6","June"),("7","July"),("8","August"),("9","September"),("10","October"),("11","November"),("12","December")])
+    # year=fields.Char("Year")
 
-    # date=fields.date("Date")
+    date=fields.Date(month="Date")
 
     def _compute_name(self):
-        for rec in self:
-            rec.name=" Hertz Global "
+         self.name=" Hertz Global "
 
-    def _compute_month(self):
-        reco=self.env["customer.invoices"].search([("star_date","in","month=12")])
-        for i in reco:
-            self.month=self.month + 1
+    @api.onchange("month")
+    def onchange_month_to_monthincome(self):
+        # print("\n\n\n\n\n\n",self.month)
+        reco=self.env["customer.invoices"].search([("theday","=",self.month)])
+        # print("\ngkddddddddddddddddddddddddddddddddddddddddddddd",reco)
+        month_world=0
+        for rec in reco:
+            # print("""     hyyafdsuuuuuuussssssssssssssssssssssssssssss     """,self.month)
+            # print("""     ssssssssssssssssssssssssssssssssssssssssss     """,rec.theday)
+            # print(rec)
+            if(rec.pythment == "offline"):
+                month_world=month_world + rec.total
+        self.month_income=month_world

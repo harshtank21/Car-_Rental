@@ -1,11 +1,10 @@
 from odoo import models,fields,api
+from datetime import date
 
 
-class Advanc_order(models.Model):
-    _name = "advanc.order"
+class New_Order(models.Model):
+    _name = "running.order"
     _description = "Car Rental"
-
-
 
     name = fields.Char(string="Name", required=True)
     address = fields.Char(string="Address", required=True)
@@ -17,3 +16,8 @@ class Advanc_order(models.Model):
     driver=fields.Selection([("with driver","With Driver",),("without driver ","Without Driver")] , string="driver")
     rent = fields.Integer(string="Rent")
     cars=fields.Many2one("car.management",string="Cars")
+
+
+
+
+

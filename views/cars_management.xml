@@ -6,7 +6,9 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <h1><field name="squ"/></h1>
+                    <h1>
+                        <field name="squ"/>
+                    </h1>
                     <field name="img" widget="image" class="oe_avatar"/>
                     <group>
                         <group>
@@ -43,6 +45,13 @@
         <field name="res_model">car.management</field>
         <field name="view_mode">tree,form,kanban</field>
     </record>
+
+    <menuitem id="car_details_sub_menu"
+              name="cars Details"
+              parent="car_management_menu"
+              action="car_management_action"
+              sequence="10"/>
+
 </odoo>
 
 
