@@ -14,17 +14,17 @@ You could use this simplified accounting in case you work with an (external) acc
     'website': 'https://www.odoo.com/app/invoicing',
     'depends' : ['base'],
     'data': [
-        'views/AAmenu.xml',
+        'views/menu_views.xml',
         'security/ir.model.access.csv',
-        'views/offline_transaction.xml',
-        'views/online_transaction.xml',
-        'views/All_order.xml',
-        'views/avd_orders.xml',
-        'views/running_order.xml',
-        'views/drver_salary.xml',
-        'views/customers.xml',
-        'views/cars_management.xml',
-        'views/customer_incoices.xml',
+        'views/offline_transaction_views.xml',
+        'views/online_transaction_views.xml',
+        'views/All_order_views.xml',
+        'views/avd_orders_views.xml',
+        'views/running_order_views.xml',
+        'views/drver_salary_views.xml',
+        'views/customers_customers_views.xml',
+        'views/cars_management_views.xml',
+        'views/customer_incoices_views.xml',
         'data/ir_sequence_data.xml'
 
 

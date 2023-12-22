@@ -1,7 +1,7 @@
 from odoo import models, fields, api
 from datetime import date
 
-class Offline_Transaction(models.Model):
+class OfflineTransaction(models.Model):
     _name = "offline.transaction"
     _description = "Car Rental"
 

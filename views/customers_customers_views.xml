@@ -2,7 +2,7 @@
 <odoo>
     <record model="ir.ui.view" id="customer_from_view">
         <field name="name">customer.from.view</field>
-        <field name="model">customer</field>
+        <field name="model">customer.customer</field>
         <field name="arch" type="xml">
             <form>
                 <header>
@@ -11,9 +11,13 @@
                     <button class="oe_stat_button" type="object" name="update_order" string="Update Order "/>
                 </header>
                 <sheet>
-                    <h1>
+                    <h6>
                         <field name="squ"/>
-                    </h1>
+                    </h6>
+                    <div align="centre">
+                        <h1><field name="compny" readonly="1"/></h1>
+                    </div>
+                    <hr/>
                     <group>
                         <group>
                             <field name="name"/>
@@ -39,7 +43,7 @@
 
     <record model="ir.ui.view" id="customer_tree_view">
         <field name="name">customer.tree.view</field>
-        <field name="model">customer</field>
+        <field name="model">customer.customer</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
@@ -51,11 +55,9 @@
     </record>
 
     <record id="customer_action" model="ir.actions.act_window">
-        <field name="name">customer</field>
+        <field name="name">customer.customer</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">customer</field>
-        <field name="context">{"default_identity":"pancard"}</field>
-        <field name="context">{"default_licence":"gj11yyjhjhgjrd"}</field>
+        <field name="res_model">customer.customer</field>
         <field name="view_mode">tree,form</field>
     </record>
 

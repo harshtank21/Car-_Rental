@@ -1,2 +1,2 @@
-from . import car_management,adv_orders,car_bills,customer,customer_invoices,running_order
-from . import offline_transaction,ALL_order,myorder_order,driver_salary,on_line_online,detailes_costomer
+from . import car_management,adv_orders,car_bills,customer_customer,customer_invoices,running_order
+from . import offline_transaction,ALL_order,myorder_order,driver_salary,online_transaction,costomer_detailes

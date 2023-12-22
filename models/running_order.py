@@ -2,7 +2,7 @@ from odoo import models,fields,api
 from datetime import date
 
 
-class New_Order(models.Model):
+class RunningOrder(models.Model):
     _name = "running.order"
     _description = "Car Rental"
 

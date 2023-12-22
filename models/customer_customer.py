@@ -2,10 +2,11 @@ from odoo import models, fields, api
 from datetime import date
 
 
-class Customer(models.Model):
-    _name = "customer"
+class CustomerCustomer(models.Model):
+    _name = "customer.customer"
     _description = "Car Rental"
     _rec_name = "squ"
+
 
     name = fields.Char(string="Name", required=True)
     address = fields.Char(string="Address", required=True)
@@ -17,6 +18,7 @@ class Customer(models.Model):
     licence_attach = fields.Binary(string="Licence Attach")
     identity = fields.Selection([("identity", "Identity"), ("pancard", "Pan card"), ("voter id", "Voter id")],
                                 required=True, string="Identity")
+    compny=fields.Char(string="namec")
     Identity_img = fields.Binary(string="Identity Attach")
     squ = fields.Char(string="squ", readonly=True)
     exm = fields.Char(string="exm")
@@ -60,14 +62,14 @@ class Customer(models.Model):
             })
         elif (self.star_date <  today and self.end_date > today):
             self.env["all.order"].create({
-                    "name": self.name,
-                    "address": self.address,
-                    "star_date": self.star_date,
-                    "rent": self.rent,
-                    "end_date": self.end_date,
-                    "phone": self.phone,
-                    "email": self.email
-                })
+                "name": self.name,
+                "address": self.address,
+                "star_date": self.star_date,
+                "rent": self.rent,
+                "end_date": self.end_date,
+                "phone": self.phone,
+                "email": self.email
+            })
             self.env["running.order"].create({
                 "name": self.name,
                 "address": self.address,
@@ -81,5 +83,9 @@ class Customer(models.Model):
     @api.model
     def create(self, vals):
         vals['squ'] = self.env['ir.sequence'].next_by_code('my.sequence')
-        return super(Customer, self).create(vals)
+        vals['compny'] = "Hertz Global Pvt.Ltd"
+        return super(CustomerCustomer, self).create(vals)
 
+    def write(self, vals):
+        vals['compny'] = "Hertz Global Pvt.Ltd"
+        return super(CustomerCustomer, self).write(vals)
