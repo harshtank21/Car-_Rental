@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="car_bill_from_view">
+        <field name="name">car.bills.from.view</field>
+        <field name="model">car.bills</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <!--                <field name="date"/>-->
+                            <field name="month"/>
+                            <field name="total_pay_this_month"/>
+                        </group>
+                        <group>
+<!--                            <field name="driver_name"/>-->
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="car_bill_tree_view">
+        <field name="name">car.bills.tree.view</field>
+        <field name="model">car.bills</field>
+        <field name="arch" type="xml">
+            <tree>
+                            <field name="name"/>
+                            <!--                <field name="date"/>-->
+                            <field name="month"/>
+                            <field name="total_pay_this_month"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="car_bills_action" model="ir.actions.act_window">
+        <field name="name">car bills</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">car.bills</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="car_bills_menu"
+              name="Car cleaning Bills"
+              parent="maintenance_menu"
+              action="car_bills_action"
+              sequence="25"/>
+</odoo>

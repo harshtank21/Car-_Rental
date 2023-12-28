@@ -22,3 +22,28 @@ class CarManagement(models.Model):
         return super(CarManagement, self).create(vals)
 
     # @api.depends('name', 'speed')
+    @api.model
+    def name_get(self):
+        res = []
+        for record in self:
+            name = record.rent
+            if record.rent:
+                name = record.name + "-" + str(name)
+            res.append((record.id, name))
+        return res
+
+    @api.model
+    def _name_search(self, name="suv", args=None, operator='ilike', limit=100, name_get_uid=None):
+        print("----------------------------------_>",limit)
+        args = args or []
+        domain = []
+        if name:
+            domain = ['|', ('type', operator, name), ('name', operator, name)]
+            # domain = [('type', operator, name),('type', "=", "suv")]
+        return self._search(domain + args, limit=limit, access_rights_uid=name_get_uid)
+
+    # @api.model
+    # def name_search(self, name='', args=None, operator='ilike', limit=100):
+    #     name="luxurious"
+    #     ids = self._name_search(name, args, operator, limit=limit)
+    #     return self.browse(ids).sudo().name_get()

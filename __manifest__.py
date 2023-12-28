@@ -25,6 +25,9 @@ You could use this simplified accounting in case you work with an (external) acc
         'views/customers_customers_views.xml',
         'views/cars_management_views.xml',
         'views/customer_incoices_views.xml',
+        'views/cleaning_maintenance_views.xml',
+        'views/cleaning_ticket_create_views.xml',
+        'views/car_bills_views.xml',
         'data/ir_sequence_data.xml'
 
 

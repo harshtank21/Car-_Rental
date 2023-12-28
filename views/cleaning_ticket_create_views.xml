@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="cleaning_ticket_create_from_view">
+        <field name="name">cleaning_ticket_create_from_view.from.view</field>
+        <field name="model">cleaning.ticket.create</field>
+        <field name="arch" type="xml">
+            <header>
+                <button class="oe_stat_button" type="object" name="update_cleaning_maintenance"
+                        string="Update Cleaning Maintenance"/>
+            </header>
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="washing"/>
+                        </group>
+                        <group>
+                            <field name="driver_name"/>
+                            <field name="date"/>
+                            <field name="cost"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="cleaning_ticket_create_tree_view">
+        <field name="name">cleaning_ticket_create_from_view.tree.view</field>
+        <field name="model">cleaning.ticket.create</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="driver_name"/>
+                <field name="date"/>
+                <field name="cost"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="cleaning_ticket_create_action" model="ir.actions.act_window">
+        <field name="name">Cleaning Ticket create</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cleaning.ticket.create</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="cleaning_ticket_create_menu"
+              name="Cleaning Ticket create "
+              parent="maintenance_menu"
+              action="cleaning_ticket_create_action"
+              sequence="20"/>
+
+
+</odoo>

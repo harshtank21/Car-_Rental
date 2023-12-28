@@ -38,6 +38,12 @@
             </tree>
         </field>
     </record>
+<!--    <kanban class="o_res_partner_kanban" sample="1">-->
+<!--        <field name="img"/>-->
+<!--        <field name="name"/>-->
+<!--        <field name="rent"/>-->
+<!--        -->
+<!--    </kanban>-->
 
     <record id="car_management_action" model="ir.actions.act_window">
         <field name="name">Car Management</field>

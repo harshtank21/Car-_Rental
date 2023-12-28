@@ -14,9 +14,9 @@
                     <h6>
                         <field name="squ"/>
                     </h6>
-                    <div align="centre">
-                        <h1><field name="compny" readonly="1"/></h1>
-                    </div>
+                    <h1>
+                        <field name="compny" readonly="1"/>
+                    </h1>
                     <hr/>
                     <group>
                         <group>
@@ -26,6 +26,7 @@
                             <field name="licence"/>
                             <field name="licence_attach"/>
                             <field name="phone" widget="phone"/>
+                            <field name="driver" />
                         </group>
                         <group>
                             <field name="end_date"/>
@@ -34,8 +35,15 @@
                             <field name="Identity_img"/>
                             <field name="car_booking"/>
                             <field name="email" widget="email"/>
+                            <field name="driver_name" attrs="{'invisible':
+            [('driver','=',False)] }"/>
                         </group>
                     </group>
+                    <h1>
+                        <b>
+                            <field name="welcome_note" readonly="1"/>
+                        </b>
+                    </h1>
                 </sheet>
             </form>
         </field>
