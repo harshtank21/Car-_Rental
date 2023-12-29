@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from datetime import date, datetime
 
 
 class CarBills(models.Model):
@@ -23,11 +24,16 @@ class CarBills(models.Model):
          ("10", "October"),
          ("11", "November"),
          ("12", "December")])
+    last_entry = fields.Date(string="LAST ENTRY DATE", default=datetime.now())
 
-    @api.onchange("month")
+    @api.onchange("month", "name")
     def onchange_month(self):
         reco = self.env["cleaning.maintenance"].search([("theday", "=", self.month), ("name", "=", self.name)])
+        self.count = self.env["cleaning.maintenance"].search_count(
+            [("theday", "=", self.month), ("name", "=", self.name)])
         month_world = 0
-        for rec in reco:
-            month_world = month_world + rec.cost
-        self.total_pay_this_month = month_world
+
+        if self.month:
+            for rec in reco:
+                month_world = month_world + rec.cost
+            self.total_pay_this_month = month_world

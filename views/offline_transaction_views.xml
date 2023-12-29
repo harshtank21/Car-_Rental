@@ -45,6 +45,4 @@
               parent="finance_management_menu"
               action="offline_transaction_action"
               sequence="10"/>
-
-
 </odoo>

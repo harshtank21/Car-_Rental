@@ -9,12 +9,12 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <!--                <field name="date"/>-->
-                            <field name="month"/>
-                            <field name="total_pay_this_month"/>
+                            <field name="last_entry"/>
                         </group>
                         <group>
-<!--                            <field name="driver_name"/>-->
+                            <field name="month"/>
+                            <field name="total_pay_this_month"/>
+                            <field name="count"/>
                         </group>
                     </group>
                 </sheet>
@@ -27,10 +27,11 @@
         <field name="model">car.bills</field>
         <field name="arch" type="xml">
             <tree>
-                            <field name="name"/>
-                            <!--                <field name="date"/>-->
-                            <field name="month"/>
-                            <field name="total_pay_this_month"/>
+                <field name="name"/>
+                <field name="count"/>
+                <field name="month"/>
+                <field name="last_entry"/>
+                <field name="total_pay_this_month"/>
             </tree>
         </field>
     </record>

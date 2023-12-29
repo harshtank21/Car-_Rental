@@ -9,16 +9,16 @@
                     <h1>
                         <field name="squ"/>
                     </h1>
-                    <field name="img" widget="image" class="oe_avatar"/>
                     <group>
                         <group>
                             <field name="name"/>
                             <field name="rent"/>
-                        </group>
-                        <group>
                             <field name="speed"/>
                             <field name="avg"/>
                             <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="img"  string="CAR" widget="image" />
                         </group>
                     </group>
                 </sheet>
@@ -38,12 +38,12 @@
             </tree>
         </field>
     </record>
-<!--    <kanban class="o_res_partner_kanban" sample="1">-->
-<!--        <field name="img"/>-->
-<!--        <field name="name"/>-->
-<!--        <field name="rent"/>-->
-<!--        -->
-<!--    </kanban>-->
+    <!--    <kanban class="o_res_partner_kanban" sample="1">-->
+    <!--        <field name="img"/>-->
+    <!--        <field name="name"/>-->
+    <!--        <field name="rent"/>-->
+    <!--        -->
+    <!--    </kanban>-->
 
     <record id="car_management_action" model="ir.actions.act_window">
         <field name="name">Car Management</field>

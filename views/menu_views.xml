@@ -33,9 +33,9 @@
 
 
     <menuitem id="finance_management_menu"
-              name="Finance Management"
+              name="Finance"
               parent="car_rental_menu"
-              sequence="50"/>
+              sequence="60"/>
 
     <menuitem id="order_menu"
               name="Order"
