@@ -5,7 +5,6 @@ from datetime import date
 class CustomerCustomer(models.Model):
     _name = "customer.customer"
     _description = "Car Rental"
-    _rec_name = "squ"
 
     name = fields.Char(string="Name", required=True)
     address = fields.Char(string="Address", required=True)
@@ -28,7 +27,7 @@ class CustomerCustomer(models.Model):
     rent = fields.Integer(string="Rent", related="car_booking.rent")
     welcome_note = fields.Char("w")
     driver = fields.Boolean("DRIVER")
-    driver_name = fields.Many2one("driver.salary","DRIVER NAME")
+    driver_name = fields.Many2one("driver.salary", "DRIVER NAME")
 
     def update_customer_invoices(self):
         self.env["customer.invoices"].create({

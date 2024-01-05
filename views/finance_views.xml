@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="finance_finance_from_view">
+        <field name="name">finance.finance.from.view</field>
+        <field name="model">finance.finance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <b>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </b>
+                    <group>
+                        <group>
+                            <field name="month"/>
+                        </group>
+                        <group>
+                            <field name="date_one"/>
+                        </group>
+                    </group>
+                    <b>
+                        <hr/>
+                    </b>
+                    <div align="right">
+                        <h6>
+                            <b>Online payment :
+                                <field name="online_income" />
+                            </b>
+                        </h6>
+                        <h6>
+                            <b>Offline payment:
+                                <field name="offline_income" />
+                                ₹
+                            </b>
+                        </h6>
+                        <h6>
+                            <b>
+                                <u>Car Bills Gajanan Motor :
+                                    <field name="car_bills_steer_well_auto_" />
+                                    ₹
+                                </u>
+                            </b>
+                        </h6>
+                        <h3>
+                            <b>Car Bills Steer Well Auto:<field name="car_bills_gajanan_motor" />₹
+                            </b>
+                        </h3>
+                        <h3>
+                            <b>Car Bills Auto Club:
+                                <field name="car_bills_auto_club_car_dettling_studios" />
+                                ₹
+                            </b>
+                        </h3>
+                        <hr/>
+                        <b>Month Income <field name="month_income" /></b>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="finance_finance_tree_view">
+        <field name="name">finance.finance.tree.view</field>
+        <field name="model">finance.finance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="month"/>
+                <field name="date_one"/>
+                <field name="online_income"/>
+                <field name="offline_income"/>
+                <field name="car_bills_steer_well_auto_"/>
+                <field name="car_bills_gajanan_motor"/>
+                <field name="car_bills_auto_club_car_dettling_studios"/>
+                <field name="month_income" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="finance_finance_menu_action" model="ir.actions.act_window">
+        <field name="name">Finance</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">finance.finance</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="customer_finance_menu"
+              name="Finance "
+              parent="finance_management_menu"
+              action="finance_finance_menu_action"
+              sequence="20"/>
+
+</odoo>

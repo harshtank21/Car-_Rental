@@ -25,13 +25,6 @@
               sequence="20"/>
 
 
-
-
-
-
-
-
-
     <menuitem id="finance_management_menu"
               name="Finance"
               parent="car_rental_menu"
@@ -41,4 +34,5 @@
               name="Order"
               parent="car_rental_menu"
               sequence="25"/>
+
 </odoo>

@@ -66,12 +66,12 @@ class CustomerInvoices(models.Model):
     @api.model
     def create(self, v):
 
-        print("beforeeeee vvvvvvvvvvvvvvvvvvvvv-------------------->",v)
-        print("self------------------------------------>",self)
+        # print("beforeeeee vvvvvvvvvvvvvvvvvvvvv-------------------->",v)
+        # print("self------------------------------------>",self)
         ret = super(CustomerInvoices,self).create(v)
         v['indriver'] = True
-        print("afterr---------------->",v)
-        print("--------------------------->",ret)
+        # print("afterr---------------->",v)
+        # print("--------------------------->",ret)
         return ret
 
         # def _compute_your_total(self):

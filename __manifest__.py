@@ -18,7 +18,7 @@ You could use this simplified accounting in case you work with an (external) acc
         'security/ir.model.access.csv',
         'views/offline_transaction_views.xml',
         'views/online_transaction_views.xml',
-        'views/All_order_views.xml',
+        'views/all_order_views.xml',
         'views/avd_orders_views.xml',
         'views/running_order_views.xml',
         'views/driver_salary_views.xml',
@@ -28,6 +28,7 @@ You could use this simplified accounting in case you work with an (external) acc
         'views/cleaning_maintenance_views.xml',
         'views/cleaning_ticket_create_views.xml',
         'views/car_bills_views.xml',
+        'views/finance_views.xml',
         'data/ir_sequence_data.xml'
 
 

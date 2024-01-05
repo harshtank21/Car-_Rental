@@ -5,8 +5,8 @@ class CarManagement(models.Model):
     _name = "car.management"
     _description = "Car Rental"
     # _rec_name = "speed"
-
     name = fields.Char(string="Name", required=True)
+    rental_name_one = fields.Char(string="Rental name")
     img = fields.Binary("img")
     avg = fields.Integer("Average")
     speed = fields.Integer("Speed")
@@ -19,7 +19,10 @@ class CarManagement(models.Model):
     @api.model
     def create(self, vals):
         vals['squ'] = self.env['ir.sequence'].next_by_code('my.sequence.code')
+        print(vals)
+        vals["rental_name_one"] = "my cars"
         return super(CarManagement, self).create(vals)
+
 
     # @api.depends('name', 'speed')
     @api.model
@@ -47,3 +50,4 @@ class CarManagement(models.Model):
     #     name="luxurious"
     #     ids = self._name_search(name, args, operator, limit=limit)
     #     return self.browse(ids).sudo().name_get()
+
