@@ -26,7 +26,7 @@
                             <field name="licence"/>
                             <field name="licence_attach"/>
                             <field name="phone" widget="phone"/>
-                            <field name="driver" />
+                            <field name="driver"/>
                         </group>
                         <group>
                             <field name="end_date"/>
@@ -45,6 +45,11 @@
                         </b>
                     </h1>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>

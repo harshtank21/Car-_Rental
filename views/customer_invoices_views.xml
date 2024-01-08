@@ -5,8 +5,12 @@
         <field name="model">customer.invoices</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                <button class="oe_stat_button" type="object" name="send_massages"
+                        string="Click "/>
+                </header>
                 <sheet>
-<!--                    <h4>Date <field name="thatday"> </field></h4>-->
+                    <!--                    <h4>Date <field name="thatday"> </field></h4>-->
                     <!--                    <h1>-->
                     <!--                        <field name="squ"/>-->
                     <!--                    </h1>-->
@@ -32,12 +36,40 @@
                     </group>
                     <hr/>
                     <div align="right">
-                        <h6><b>You bill :<field name="yourbill" /> </b></h6>
-                        <h6><b>GST  :<field name="gst"/> ₹</b></h6>
-                        <h6><b><u>DRIVER fess  :<field name="driver" readonly="1"/> ₹</u></b></h6>
-                        <h3><b>TOTAL BILL   :<field name="total" readonly="1"/>₹</b></h3>
+                        <h6>
+                            <b>You bill :
+                                <field name="yourbill"/>
+                            </b>
+                        </h6>
+                        <h6>
+                            <b>GST :
+                                <field name="gst"/>
+                                ₹
+                            </b>
+                        </h6>
+                        <h6>
+                            <b>
+                                <u>DRIVER fess :
+                                    <field name="driver" readonly="1"/>
+                                    ₹
+                                </u>
+                            </b>
+                        </h6>
+                        <h3>
+                            <b>TOTAL BILL :<field name="total" readonly="1"/>₹
+                            </b>
+                        </h3>
                     </div>
+                    <notebook>
+                        <page string="CAR" name="order_car">
+                        </page>
+                    </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>

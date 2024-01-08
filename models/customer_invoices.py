@@ -4,6 +4,7 @@ from datetime import date
 
 class CustomerInvoices(models.Model):
     _name = "customer.invoices"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Car Rental"
 
     name = fields.Char(string="Name", required=True)
@@ -21,10 +22,10 @@ class CustomerInvoices(models.Model):
     identity = fields.Selection([("identity", "Identity"), ("pancard", "Pan card"), ("voter id", "Voter id")],
                                 required=True, string="Identity")
     Identity_img = fields.Binary(string="Identity Attach")
-    yourbill = fields.Integer(string="You Payable Amount", compute="_compute_your_bills", )
+    yourbill = fields.Integer(string="You Payable Amount", compute="_compute_your_bills")
     gst = fields.Integer(string="gst", compute="_compute_your_gst", )
     # total = fields.Integer(string="TOTAL BILL", compute="_compute_your_total")
-    total = fields.Integer(string="TOTAL BILL", compute="_compute_your_driver")
+    total = fields.Integer(string="TOTAL BILL", compute="_compute_your_driver", tracking=True, store=True)
     pythment = fields.Selection([("online", "Online"), ("offline", "Offline")])
     adev = fields.Many2one("all.order", string="Done")
     indriver = fields.Boolean(string="driver")
@@ -54,6 +55,7 @@ class CustomerInvoices(models.Model):
 
     # @api.onchange("indriver")
     # def onchange_your_driver(self):
+    @api.depends("indriver")
     def _compute_your_driver(self):
         for selff in self:
             if (selff.indriver == True):
@@ -61,6 +63,7 @@ class CustomerInvoices(models.Model):
                 selff.total = selff.yourbill + selff.gst + selff.driver
             else:
                 # self.driver = 0
+                selff.driver = 0
                 selff.total = selff.yourbill + selff.gst + selff.driver
 
     @api.model
@@ -68,7 +71,7 @@ class CustomerInvoices(models.Model):
 
         # print("beforeeeee vvvvvvvvvvvvvvvvvvvvv-------------------->",v)
         # print("self------------------------------------>",self)
-        ret = super(CustomerInvoices,self).create(v)
+        ret = super(CustomerInvoices, self).create(v)
         v['indriver'] = True
         # print("afterr---------------->",v)
         # print("--------------------------->",ret)
@@ -81,3 +84,6 @@ class CustomerInvoices(models.Model):
     # @api.onchange("name")
     # def onchange_your_driver(self):
     #     to=date
+
+    def send_massages(self):
+        self.message_post(body="Hello Good Morning!")

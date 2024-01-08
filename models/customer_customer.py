@@ -4,6 +4,7 @@ from datetime import date
 
 class CustomerCustomer(models.Model):
     _name = "customer.customer"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Car Rental"
 
     name = fields.Char(string="Name", required=True)
@@ -92,25 +93,21 @@ class CustomerCustomer(models.Model):
 
     def write(self, vals):
         vals['compny'] = "Hertz Global Pvt.Ltd"
-        # x=self.env["car.management"].read_group([],["speed"],["speed"])
         x = self.env["car.management"].search_read([("type", "=", "suv")], fields=['name', "speed"])
-        print(x)
         return super(CustomerCustomer, self).write(vals)
-
-        # def try_button(self):
-        #     partners = self.env['res.partner'].search([]).read(['name', 'phone'])
-        #     print("\n\n\nn partners", partners)
-
-        # def default_get(self):
 
     @api.model
     def default_get(self, fields):
-        # print(fields)
         res = super(CustomerCustomer, self).default_get(fields)
-        # print(res)
-        # if res.get('model'):
-        #     res['model_id'] = self.env['ir.model']._get(res.pop('model')).id
         res['welcome_note'] = "Welcome to Hertz Global Pvt.Ltd"
-        # print(res)
 
         return res
+
+    @api.onchange("licence")
+    def onchange_your_driver(self):
+        self._track_subtype(self.licence)
+
+    def _track_subtype(self, init_values):
+        print("------------>", init_values)
+            # return self.env.ref(init_values)
+        return super(CustomerCustomer, self)._track_subtype(init_values)

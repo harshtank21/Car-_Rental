@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import  ValidationError
 
 
 class CarManagement(models.Model):
@@ -23,7 +24,6 @@ class CarManagement(models.Model):
         vals["rental_name_one"] = "my cars"
         return super(CarManagement, self).create(vals)
 
-
     # @api.depends('name', 'speed')
     @api.model
     def name_get(self):
@@ -37,7 +37,7 @@ class CarManagement(models.Model):
 
     @api.model
     def _name_search(self, name="suv", args=None, operator='ilike', limit=100, name_get_uid=None):
-        print("----------------------------------_>",limit)
+        print("----------------------------------_>", limit)
         args = args or []
         domain = []
         if name:
@@ -51,3 +51,9 @@ class CarManagement(models.Model):
     #     ids = self._name_search(name, args, operator, limit=limit)
     #     return self.browse(ids).sudo().name_get()
 
+    @api.constrains('name')
+    def _check_car_names(self):
+        for rec in self:
+            recorde = self.search([("name", "=", rec.name), ("id", "!=", rec.id)])
+            if recorde:
+                raise ValidationError('%s Already Exists In Car List.'%rec.name)
