@@ -93,6 +93,10 @@ class CustomerCustomer(models.Model):
 
     def write(self, vals):
         vals['compny'] = "Hertz Global Pvt.Ltd"
+        print(dir(self._fields["identity"]))
+        selection = dict(self._fields["identity"].selection)
+        if "identity" in vals:
+            self.message_post(body=f'{selection[self.identity]} --> {selection[vals["identity"]]}')
         x = self.env["car.management"].search_read([("type", "=", "suv")], fields=['name', "speed"])
         return super(CustomerCustomer, self).write(vals)
 
@@ -108,6 +112,7 @@ class CustomerCustomer(models.Model):
         self._track_subtype(self.licence)
 
     def _track_subtype(self, init_values):
-        print("------------>", init_values)
-            # return self.env.ref(init_values)
+        # print("------------>", init_values)
+        # return self.env.ref(init_values)
+        # self.message_post(body=init_values)
         return super(CustomerCustomer, self)._track_subtype(init_values)

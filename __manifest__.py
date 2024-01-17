@@ -1,6 +1,6 @@
 {
-    "name" : "Car Rental",
-    'version' : '16.0.1.0.0',
+    "name": "Car Rental",
+    'version': '16.0.1.0.0',
     'summary': 'Invoices & Payments',
     'sequence': 10,
     'description': """
@@ -12,10 +12,11 @@ You could use this simplified accounting in case you work with an (external) acc
     """,
     'category': 'Accounting/Accounting',
     'website': 'https://www.odoo.com/app/invoicing',
-    'depends' : ['base','mail'],
+    'depends': ['base', 'mail'],
     'data': [
-        'views/menu_views.xml',
         'security/ir.model.access.csv',
+        'security/security.xml',
+        'views/menu_views.xml',
         'views/offline_transaction_views.xml',
         'views/online_transaction_views.xml',
         'views/all_order_views.xml',
@@ -30,10 +31,6 @@ You could use this simplified accounting in case you work with an (external) acc
         'views/car_bills_views.xml',
         'views/finance_views.xml',
         'data/ir_sequence_data.xml'
-
-
-
-
 
     ],
     'installable': True,
