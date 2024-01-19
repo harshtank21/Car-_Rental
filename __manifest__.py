@@ -20,6 +20,7 @@ You could use this simplified accounting in case you work with an (external) acc
         'data/mail_template_data.xml',
         'report/sale_order_report.xml',
         'report/car_rental_order_report_template.xml',
+        'report/car_rental_order_report_second_template.xml',
         'report/car_rental_order_report.xml',
         'views/menu_views.xml',
         'views/offline_transaction_views.xml',
