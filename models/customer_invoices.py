@@ -7,7 +7,7 @@ class CustomerInvoices(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "Car Rental"
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Many2one("customer.customer",string="Name", required=True)
     # GST_ID = fields.Char(string="GST_No ", releted="5442GFT29NE")
     ret = fields.Many2one("customer.customer", "ret")
     address = fields.Char(string="Address", required=True)
@@ -62,28 +62,21 @@ class CustomerInvoices(models.Model):
                 selff.driver = selff.rent_time * 1000
                 selff.total = selff.yourbill + selff.gst + selff.driver
             else:
-                # self.driver = 0
                 selff.driver = 0
                 selff.total = selff.yourbill + selff.gst + selff.driver
 
     @api.model
     def create(self, v):
-
-        # print("beforeeeee vvvvvvvvvvvvvvvvvvvvv-------------------->",v)
-        # print("self------------------------------------>",self)
         ret = super(CustomerInvoices, self).create(v)
         v['indriver'] = True
-        # print("afterr---------------->",v)
-        # print("--------------------------->",ret)
         return ret
 
-        # def _compute_your_total(self):
-        #     for rec in self:
-        #         rec.total = rec.yourbill + rec.gst + rec.driver
-
-    # @api.onchange("name")
-    # def onchange_your_driver(self):
-    #     to=date
 
     def send_massages(self):
         self.message_post(body="Hello Good Morning!")
+
+
+    def send_email(self):
+        template=self.env.ref("car_Rental.email_rental_sale")
+        for rec in self:
+            template.send_mail(rec.id,force_send=True,raise_exception=False)

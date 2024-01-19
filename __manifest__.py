@@ -12,10 +12,15 @@ You could use this simplified accounting in case you work with an (external) acc
     """,
     'category': 'Accounting/Accounting',
     'website': 'https://www.odoo.com/app/invoicing',
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'sale', 'contacts'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
+        'data/ir_sequence_data.xml',
+        'data/mail_template_data.xml',
+        'report/sale_order_report.xml',
+        'report/car_rental_order_report_template.xml',
+        'report/car_rental_order_report.xml',
         'views/menu_views.xml',
         'views/offline_transaction_views.xml',
         'views/online_transaction_views.xml',
@@ -30,7 +35,6 @@ You could use this simplified accounting in case you work with an (external) acc
         'views/cleaning_ticket_create_views.xml',
         'views/car_bills_views.xml',
         'views/finance_views.xml',
-        'data/ir_sequence_data.xml'
 
     ],
     'installable': True,

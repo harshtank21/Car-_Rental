@@ -18,11 +18,17 @@
                             <field name="type"/>
                         </group>
                         <group>
-                            <field name="img"  string="CAR" widget="image" />
+                            <field name="img" string="CAR" widget="image"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Customer Details" name="order_car">
+                            <field name="customer_details_ids"/>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
+
         </field>
     </record>
 

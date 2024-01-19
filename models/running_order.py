@@ -6,7 +6,7 @@ class RunningOrder(models.Model):
     _name = "running.order"
     _description = "Car Rental"
 
-    name = fields.Char(string="Name", required=True)
+    name = fields.Many2one("customer.customer",string="Name", required=True)
     address = fields.Char(string="Address", required=True)
     star_date = fields.Date(string="Star Date")
     end_date = fields.Date(string="End Date")

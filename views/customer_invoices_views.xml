@@ -8,6 +8,8 @@
                 <header>
                 <button class="oe_stat_button" type="object" name="send_massages"
                         string="Click "/>
+                <button class="oe_highlight" type="object" name="send_email"
+                        string="Send By Email "/>
                 </header>
                 <sheet>
                     <!--                    <h4>Date <field name="thatday"> </field></h4>-->

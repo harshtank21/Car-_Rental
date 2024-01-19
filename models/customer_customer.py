@@ -29,10 +29,12 @@ class CustomerCustomer(models.Model):
     welcome_note = fields.Char("w")
     driver = fields.Boolean("DRIVER")
     driver_name = fields.Many2one("driver.salary", "DRIVER NAME")
+    car_details_id = fields.Many2one("car.management", "Car Details")
+    
 
     def update_customer_invoices(self):
         self.env["customer.invoices"].create({
-            "name": self.name,
+            "name": self.id,
             "address": self.address,
             "star_date": self.star_date,
             "rent": self.rent,
@@ -48,7 +50,7 @@ class CustomerCustomer(models.Model):
         today = date.today()
         if (self.star_date >= today):
             self.env["all.order"].create({
-                "name": self.name,
+                "name": self.id,
                 "address": self.address,
                 "star_date": self.star_date,
                 "rent": self.rent,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="description_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_description']"
+               position="after">
+            <th name="th_internal_reference" class="text-start">Internal Reference</th>
+        </xpath>
+        <xpath expr="//span[@t-field='line.name']" position="after">
+            <td>
+                <span t-out="line.product_template_id.default_code"/>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

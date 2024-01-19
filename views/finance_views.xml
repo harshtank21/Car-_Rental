@@ -36,22 +36,12 @@
                         </h6>
                         <h6>
                             <b>
-                                <u>Car Bills Gajanan Motor :
-                                    <field name="car_bills_steer_well_auto_" />
+                                <u>Car Maintenance:
+                                    <field name="car_maintenance" />
                                     ₹
                                 </u>
                             </b>
                         </h6>
-                        <h3>
-                            <b>Car Bills Steer Well Auto:<field name="car_bills_gajanan_motor" />₹
-                            </b>
-                        </h3>
-                        <h3>
-                            <b>Car Bills Auto Club:
-                                <field name="car_bills_auto_club_car_dettling_studios" />
-                                ₹
-                            </b>
-                        </h3>
                         <hr/>
                         <b>Month Income <field name="month_income" /></b>
                     </div>
@@ -70,9 +60,7 @@
                 <field name="date_one"/>
                 <field name="online_income"/>
                 <field name="offline_income"/>
-                <field name="car_bills_steer_well_auto_"/>
-                <field name="car_bills_gajanan_motor"/>
-                <field name="car_bills_auto_club_car_dettling_studios"/>
+                <field name="car_maintenance"/>
                 <field name="month_income" />
             </tree>
         </field>

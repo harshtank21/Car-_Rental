@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="fleet_rule_odometer_visibility_user" model="ir.rule">
-        <field name="name">User</field>
-        <field name="model_id" ref="model_finance_finance"/>
-        <field name="perm_read" eval="True"/>
-        <field name="perm_write" eval="True"/>
-        <field name="perm_create" eval="True"/>
-        <field name="perm_unlink" eval="True"/>
-        <field name="domain_force">[('user_id', '=','manger' )]</field>
-    </record>
+<!--    <record id="car_rental_manager" model="ir.rule">-->
+<!--        <field name="name">rental manager</field>-->
+<!--        <field name="model_id" ref="model_driver_salary"/>-->
+<!--        <field name="domain_force">[('month', '=', 12)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('group_manager_of_car_rental'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="True"/>-->
+<!--        <field name="perm_create" eval="True"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
+<!--    <record id="car_rental_employee_user" model="ir.rule">-->
+<!--        <field name="name">rental employee</field>-->
+<!--        <field name="model_id" ref="model_driver_salary"/>-->
+<!--        <field name="domain_force">[(1, '=', 1)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('group_employee_of_car_rental'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="True"/>-->
+<!--        <field name="perm_create" eval="True"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
+<!--    <record id="car_rental_administration_user" model="ir.rule">-->
+<!--        <field name="name">rental Administration</field>-->
+<!--        <field name="model_id" ref="model_driver_salary"/>-->
+<!--        <field name="domain_force">[(1, '=', 1)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('group_Administration_of_car_rental'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="True"/>-->
+<!--        <field name="perm_create" eval="True"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
     <record model="ir.module.category" id="car_rental_category">
         <field name="name">Car Rental</field>
         <field name="sequence">1</field>
@@ -24,6 +45,5 @@
     <record id="group_manager_of_car_rental" model="res.groups">
         <field name="name">Manager</field>
         <field name="category_id" ref="car_rental_category"/>
-        <field name="implied_ids" eval="[(3, ref('group_employee_of_car_rental'))]"/>
     </record>
 </odoo>

@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from odoo.exceptions import  ValidationError
+from odoo.exceptions import ValidationError
 
 
 class CarManagement(models.Model):
@@ -16,6 +16,7 @@ class CarManagement(models.Model):
                              ("convertible", "convertible"), ("Sports car", "Sports car"), ("luxurious", "Luxurious")],
                             string="Type")
     squ = fields.Char(string="squ", readonly=True)
+    customer_details_ids = fields.One2many("customer.customer", "car_details_id","DRIVER NAME")
 
     @api.model
     def create(self, vals):
@@ -24,7 +25,6 @@ class CarManagement(models.Model):
         vals["rental_name_one"] = "my cars"
         return super(CarManagement, self).create(vals)
 
-    # @api.depends('name', 'speed')
     @api.model
     def name_get(self):
         res = []
@@ -37,23 +37,15 @@ class CarManagement(models.Model):
 
     @api.model
     def _name_search(self, name="suv", args=None, operator='ilike', limit=100, name_get_uid=None):
-        print("----------------------------------_>", limit)
         args = args or []
         domain = []
         if name:
             domain = ['|', ('type', operator, name), ('name', operator, name)]
-            # domain = [('type', operator, name),('type', "=", "suv")]
         return self._search(domain + args, limit=limit, access_rights_uid=name_get_uid)
-
-    # @api.model
-    # def name_search(self, name='', args=None, operator='ilike', limit=100):
-    #     name="luxurious"
-    #     ids = self._name_search(name, args, operator, limit=limit)
-    #     return self.browse(ids).sudo().name_get()
 
     @api.constrains('name')
     def _check_car_names(self):
         for rec in self:
             recorde = self.search([("name", "=", rec.name), ("id", "!=", rec.id)])
             if recorde:
-                raise ValidationError('%s Already Exists In Car List.'%rec.name)
+                raise ValidationError('%s Already Exists In Car List.' % rec.name)

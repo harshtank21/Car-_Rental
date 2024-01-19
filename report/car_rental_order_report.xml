@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_car_rental" model="ir.actions.report">
+        <field name="name">Running Order</field>
+        <field name="model">running.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">car_Rental.report_car_rental_order</field>
+        <field name="report_file">car_Rental.report_car_rental_order</field>
+        <field name="print_report_name"></field>
+        <field name="binding_model_id" ref="model_running_order"/>
+        <field name="binding_type">report</field>
+    </record>
+    <record id="action_report_car_second_rental" model="ir.actions.report">
+        <field name="name">Car Management</field>
+        <field name="model">car.management</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">car_Rental.report_car_rental_second_order</field>
+        <field name="report_file">car_Rental.report_car_rental_second_order</field>
+        <field name="print_report_name"></field>
+        <field name="binding_model_id" ref="model_car_management"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
