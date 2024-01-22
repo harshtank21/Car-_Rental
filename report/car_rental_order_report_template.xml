@@ -8,7 +8,6 @@
                      t-options='{"widget": "email", "fields": ["address", "name"], "no_marker": True}'/>
                 <span t-field="doc.address"/>
             </t>
-
             <t t-set="information_block">
                 <strong>
                     Invoicing and Shipping Address:

@@ -29,9 +29,9 @@ class OfflineTransaction(models.Model):
 
     @api.onchange("month")
     def onchange_month_to_monthincome(self):
-        reco = self.env["customer.invoices"].search([("theday", "=", self.month)])
+        reco = self.env["customer.invoices"].search([("the_day", "=", self.month)])
         month_world = 0
         for rec in reco:
-            if (rec.pythment == "offline"):
+            if (rec.payment == "offline"):
                 month_world = month_world + rec.total
         self.month_income = month_world

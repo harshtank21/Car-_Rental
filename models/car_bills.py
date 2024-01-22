@@ -28,9 +28,9 @@ class CarBills(models.Model):
 
     @api.onchange("month", "name")
     def onchange_month(self):
-        reco = self.env["cleaning.maintenance"].search([("theday", "=", self.month), ("name", "=", self.name)])
+        reco = self.env["cleaning.maintenance"].search([("the_day", "=", self.month), ("name", "=", self.name)])
         self.count = self.env["cleaning.maintenance"].search_count(
-            [("theday", "=", self.month), ("name", "=", self.name)])
+            [("the_day", "=", self.month), ("name", "=", self.name)])
         month_world = 0
 
         if self.month:

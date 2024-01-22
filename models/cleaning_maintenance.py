@@ -18,11 +18,11 @@ class CarBills(models.Model):
         [("gajanan_motors", "Gajanan Motors"), ("auto_club_car_dettling_studio", "Auto Club Car Dettling Studio"),
          ("steer_well_auto", "Steer Well Auto")],
         string="washing")
-    theday = fields.Integer(string="Date", compute="_compute_date", store=True)
+    the_day = fields.Integer(string="Date", compute="_compute_date", store=True)
 
     @api.depends("date")
     def _compute_date(self):
         for rec in self:
             if rec.date:
-                rec.theday = rec.date.month
+                rec.the_day = rec.date.month
                 rec.one_date = rec.date.strftime('%B %d, %Y')

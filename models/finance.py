@@ -41,15 +41,15 @@ class Finance(models.Model):
     @api.onchange("month")
     def total_month_account(self):
         all_bills = self.env["cleaning.maintenance"].search(
-            [("theday", "=", self.month)])
+            [("the_day", "=", self.month)])
         for rec in all_bills:
             self.car_maintenance += rec.cost
 
-        payment = self.env["customer.invoices"].search([("theday", "=", self.month)])
+        payment = self.env["customer.invoices"].search([("the_day", "=", self.month)])
         for record in payment:
-            if record.pythment == "offline":
+            if record.payment == "offline":
                 self.offline_income += record.total
-            elif record.pythment == "online":
+            elif record.payment == "online":
                 self.online_income += record.total
 
         self.month_income = (self.online_income + self.offline_income) - (self.car_maintenance)

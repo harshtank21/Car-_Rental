@@ -19,9 +19,9 @@ class OnlineTransaction(models.Model):
     @api.onchange("month")
     def onchange_month_to_monthincome(self):
         print("\n\n\n\n\n\n", self.month)
-        reco = self.env["customer.invoices"].search([("theday", "=", self.month)])
+        reco = self.env["customer.invoices"].search([("the_day", "=", self.month)])
         month_world = 0
         for rec in reco:
-            if(rec.pythment == "online"):
+            if(rec.payment == "online"):
                 month_world = month_world + rec.total
         self.month_income = month_world

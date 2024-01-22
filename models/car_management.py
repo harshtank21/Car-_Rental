@@ -16,6 +16,7 @@ class CarManagement(models.Model):
                              ("convertible", "convertible"), ("Sports car", "Sports car"), ("luxurious", "Luxurious")],
                             string="Type")
     squ = fields.Char(string="squ", readonly=True)
+    invoice_id = fields.Many2one("customer.invoices",string="invoice")
     customer_details_ids = fields.One2many("customer.customer", "car_details_id","DRIVER NAME")
 
     @api.model

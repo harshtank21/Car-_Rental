@@ -5,8 +5,8 @@
             <t t-set="address">
                 <div t-field='doc.name'/>
                 <span t-field="doc.speed"/>
-                <p t-if="doc.rent > 20000"><t
-                        t-out="done"/>:
+                <p t-if="doc.rent > 20000">
+                    <t t-out="done"/>:
                     <span t-field="doc.speed"/>
                 </p>
                 <p>
