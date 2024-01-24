@@ -28,9 +28,10 @@ class CustomerCustomer(models.Model):
     rent = fields.Integer(string="Rent", related="car_booking.rent")
     welcome_note = fields.Char("w")
     driver = fields.Boolean("DRIVER")
+    cars_name_ids = fields.Many2many(comodel_name="car.management",string="Car Details")
     driver_name = fields.Many2one("driver.salary", "DRIVER NAME")
     car_details_id = fields.Many2one("car.management", "Car Details")
-    
+
 
     def update_customer_invoices(self):
         self.env["customer.invoices"].create({
@@ -114,7 +115,4 @@ class CustomerCustomer(models.Model):
         self._track_subtype(self.licence)
 
     def _track_subtype(self, init_values):
-        # print("------------>", init_values)
-        # return self.env.ref(init_values)
-        # self.message_post(body=init_values)
         return super(CustomerCustomer, self)._track_subtype(init_values)

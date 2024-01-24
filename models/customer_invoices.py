@@ -30,7 +30,7 @@ class CustomerInvoices(models.Model):
     car_ids = fields.One2many(comodel_name="car.management", inverse_name="invoice_id", string=" car")
     in_driver = fields.Boolean(string="driver")
     driver = fields.Integer(string="indriveer", )
-    driver_name = fields.Many2one("driver.salary",string="Driver Name", )
+    driver_name = fields.Many2one("driver.salary", string="Driver Name", )
     the_day = fields.Integer(string="Date", compute="_compute_date", store=True)
 
     # @api.depends("end_date")
@@ -55,8 +55,6 @@ class CustomerInvoices(models.Model):
             rec.gst = (rec.your_bill * 18) / 100
 
 
-    # @api.onchange("in_driver")
-    # def onchange_your_driver(self):
     @api.depends("in_driver")
     def _compute_your_driver(self):
         for selff in self:

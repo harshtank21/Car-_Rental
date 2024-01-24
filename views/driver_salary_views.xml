@@ -17,6 +17,11 @@
                             <field name="licence"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Customer Details" name="order_car">
+                            <field name="car_name"/>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>

@@ -36,9 +36,10 @@ You could use this simplified accounting in case you work with an (external) acc
         'views/cars_management_views.xml',
         'views/customer_invoices_views.xml',
         'views/cleaning_maintenance_views.xml',
-        'views/cleaning_ticket_create_views.xml',
+        # 'views/cleaning_ticket_create_views.xml',
         'views/car_bills_views.xml',
         'views/finance_views.xml',
+        'wizard/customer_wizard_views.xml',
 
     ],
     'installable': True,

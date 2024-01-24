@@ -1,84 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="report_car_rental_order_test_document">
-        <t t-call="web.external_layout">
-            <t t-set="address">
-                <div t-field='doc.name'/>
-                <span t-field="doc.address"/>
-            </t>
-
-            <t t-set="information_block">
-                <strong>
-                    <t t-if="doc.your_bill > 200000">
-                        sir Invoicing Address:
-                    </t>
-                    <t t-else="">
-                        Invoicing Address:
-                    </t>
-                </strong>
-                <div t-field="doc.address"/>
-                <span t-field="doc.phone"/>
-                <div class="page">
-                    <div class="oe_structure"/>
-
-                    <h2 class="mt-4">
-                        <span t-if="doc.in_driver == True ">Driver #2212024</span>
-                        <span t-else="">Order # 2212024</span>
-                    </h2>
-
-                    <div class="row mt-4 mb-4" id="informations">
-                        <div t-if="doc.in_driver" class="col-auto col-3 mw-100 mb-2"
-                             name="informations_reference">
-                            <strong>Your Driver:</strong>
-                            <p class="m-0">
-                                <t>Ravji das</t>
-                            </p>
-                        </div>
-                        <div t-if="doc.end_date" class="col-auto col-3 mw-100 mb-2" name="informations_date">
-                            <strong>Order Date:</strong>
-                            <p class="m-0" t-field="doc.star_date" t-options='{"widget": "date"}'/>
-                        </div>
-                        <div t-if="doc.name" class="col-auto col-3 mw-100 mb-2">
-                            <strong>Salesperson:</strong>
-                            <p class="m-0" t-field="doc.name"/>
-                        </div>
-                    </div>
-                    <table class="table table-sm o_main_table table-borderless mt-4">
-                        <!-- In case we want to repeat the header, remove "display: table-row-group" -->
-                        <thead style="display: table-row-group">
-                            <tr>
-                                <th name="th_description" class="text-start">Name</th>
-                                <th name="th_quantity" class="text-end">Type</th>
-                                <th name="th_priceunit" class="text-end">Rent</th>
-                            </tr>
-                        </thead>
-                        <tbody class="sale_tbody">
-
-                            <t t-set="current_subtotal" t-value="0"/>
-
-                            <t t-foreach="" t-as="line">
-
-
-                                <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
-                                    <t>
-                                        <td name="td_name">
-                                            <span t-field="line.name"/>
-                                        </td>
-                                    </t>
-                                </tr>
-                            </t>
-                        </tbody>
-                    </table>
-
+        <div t-attf-class="header o_company_#{doc.name}_layout">
+            <div class="o_odooistic_header">
+                <div class="address">
+                    <t>Hertz Global Pvt.Ltd</t>
+                    <t>Report</t>
+                    <br/>
+                    <td>Your Bill
+                        <br/>
+                        Godal chokdi
+                        <br/>
+                        Hertz Global,Rajkot
+                        <br/>
+                        pin,256045
+                    </td>
                 </div>
-            </t>
+            </div>
+        </div>
+
+        <div class="article o_report_layout_standard">
+            <div t-field='doc.name'/>
+            <span t-field="doc.address"/>
+            <strong>
+                <t>
+                    <strong>
+                        <br/>
+                    Invoicing and Shipping Address:
+                    </strong>
+                </t>
+            </strong>
+
+            <div t-field="doc.address" >
+                <span t-field="doc.phone"/>
+            </div>
+            <div class="oe_structure"/>
+            <h2 class="mt-4">
+                <span t-if="doc.in_driver == True ">Driver #2212024</span>
+                <span t-else="">Order # 2212024</span>
+            </h2>
+            <div class="row mt-4 mb-4" id="informations">
+                <div t-if="doc.in_driver" class="col-auto col-3 mw-100 mb-2"
+                     name="informations_reference">
+                    <strong>Your Driver:</strong>
+                    <p class="m-0">
+                        <t>Ravji das</t>
+                    </p>
+                </div>
+                <div t-if="doc.end_date" class="col-auto col-3 mw-100 mb-2" name="informations_date">
+                    <strong>Order Date:</strong>
+                    <p class="m-0" t-field="doc.star_date" t-options='{"widget": "date"}'/>
+                </div>
+                <div t-if="doc.name" class="col-auto col-3 mw-100 mb-2">
+                    <strong>Salesperson:</strong>
+                    <p class="m-0" t-field="doc.name"/>
+                </div>
+            </div>
+            <table class="table table-sm o_main_table table-borderless mt-4">
+                <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                <thead style="display: table-row-group">
+                    <tr>
+                        <th name="th_description" class="text-start">Name</th>
+                        <th name="th_quantity" class="text-end">Type</th>
+                        <th name="th_priceunit" class="text-end">Rent</th>
+                    </tr>
+                </thead>
+                <t t-set="current_subtotal" t-value="0"/>
+                <t t-foreach="car_ids" t-as="line">
+                    <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
+                        <t>
+                            <td name="td_name">
+                                <span t-field="line.name"/>
+                            </td>
+                        </t>
+                    </tr>
+                </t>
+
+            </table>
+        </div>
+
+
+        <div t-attf-class="footer o_company_#{doc.name}_layout">
+            <div class="o_odooistic_footer">
+                <div class="row1">
+                    <t>Report</t>
+                    <br/>
+                    <t>Hertz Global Pvt.Ltd</t>
+                </div>
+            </div>
+        </div>
+
+
+    </template>
+    <template id="test_template">
+        <t t-call="car_Rental.report_car_rental_order_test_document">
+
         </t>
+
 
     </template>
     <template id="report_car_rental_test_order">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
-                <t t-call="car_Rental.report_car_rental_order_test_document"/>
+                <t t-call="car_Rental.test_template"/>
             </t>
         </t>
     </template>
