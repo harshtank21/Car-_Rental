@@ -100,7 +100,7 @@ class CustomerCustomer(models.Model):
         selection = dict(self._fields["identity"].selection)
         if "identity" in vals:
             self.message_post(body=f'{selection[self.identity]} --> {selection[vals["identity"]]}')
-        x = self.env["car.management"].search_read([("type", "=", "suv")], fields=['name', "speed"])
+        # x = self.env["car.management"].search_read([("type", "=", "suv")], fields=['name', "speed"])
         return super(CustomerCustomer, self).write(vals)
 
     @api.model
