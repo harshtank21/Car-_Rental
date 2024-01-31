@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="warning_wizard_form_view">
+        <field name="name">warning.wizard.form.view</field>
+        <field name="model">warning.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                   <h3><b><field name="warning" readonly="1"/></b> </h3>
+                </sheet>
+                <footer>
+                    <button string="Forcefully" class="oe_highlight" type="object" name="force_fully_assign"/>
+                    <button special="cancel" string="Cancel" class="btn-primary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="warning_wizard_action_window" model="ir.actions.act_window">
+        <field name="name">Sale</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">warning.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,32 +1,50 @@
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class SaleOrderWizad(models.TransientModel):
     _name = 'customer.wizard'
-    name = fields.Char(string="Name", required=True)
+    customer = fields.Many2one('customer.customer', string="customer", required=True)
     address = fields.Char(string="Address", required=True)
-    star_date = fields.Date(string="Star Date")
-    end_date = fields.Date(string="End Date")
-    email = fields.Char(string="Email")
-    company_img = fields.Binary("img")
-    phone = fields.Char(string="phone")
     licence = fields.Char(string="Licence", required=True)
-    licence_attach = fields.Binary(string="Licence Attach")
-    identity = fields.Selection([("identity", "Identity"),
-                                 ("pancard", "Pan card"),
-                                 ("voter id", "Voter id")],
-                                required=True, string="Identity")
-    compny = fields.Char(string="namec")
-    Identity_img = fields.Binary(string="Identity Attach")
-    squ = fields.Char(string="squ", readonly=True)
-    exm = fields.Char(string="exm")
-    car_booking = fields.Many2one("car.management", string="Cars")
-    rent = fields.Integer(string="Rent", related="car_booking.rent")
-    welcome_note = fields.Char("w")
-    driver = fields.Boolean("DRIVER")
-    driver_name = fields.Many2one("driver.salary", "DRIVER NAME")
+    force_fully = fields.Boolean(string="force_fully")
 
+    @api.onchange('customer')
+    def onchange_customer(self):
+        self.address = self.customer.address
+        self.licence = self.customer.licence
 
-    def leave_filter_act(self):
-        action=self.env.ref("car_Rental.customer_wizard_action_window")
-        return action
+    def assigning_cars(self):
+        context = self.env.context.get('active_ids')
+        customer = self.env["customer.customer"].search([])
+        store = []
+        old_order = []
+        for rec in customer:
+            car_id = list(res.id for res in rec.cars_name_ids)
+            cars = list(car for car in context if car in car_id)
+            if cars == []:
+                store.extend(cars)
+            else:
+                old_order.append(rec.id)
+                store.extend(cars)
+
+        if store == []:
+            self.customer.update({
+                'cars_name_ids': [(fields.Command.set(context))]
+            })
+        else:
+            return {
+                'name': 'Warning',
+                'type': 'ir.actions.act_window',
+                'view_mode': 'form',
+                "view_type": "form",
+                'res_model': 'warning.wizard',
+                'target': 'new',
+                'view_id': self.env.ref
+                ('car_Rental.warning_wizard_form_view').id,
+                'context': {'active_id': self.id,
+                            'code_match': context,
+                            'customer': self.customer.id,
+                            'old_order': old_order,
+                            'store' : store},
+            }

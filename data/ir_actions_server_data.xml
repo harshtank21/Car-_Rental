@@ -8,9 +8,7 @@
             <field name="binding_model_id" ref="model_customer_invoices"/>
             <field name="state">code</field>
             <field name="code">
-                for rec in records:
-                    if rec.in_driver == False:
-                        rec.driver_true()
+                action = records.action_totp_disable()
             </field>
         </record>
     </data>
@@ -22,7 +20,7 @@
             <field name="binding_model_id" ref="model_car_management"/>
             <field name="state">code</field>
             <field name="code">
-
+                action = record.open_wizard()
             </field>
         </record>
     </data>

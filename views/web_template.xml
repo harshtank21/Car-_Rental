@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cars" name="Cars">
+        <t t-call="website.layout">
+            <div class="container">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <thead>
+                        <tr>
+                            <td align="center" valign="center">
+                                <span>
+                                    <i>
+                                        <b>Hertz Global Pvt.Ltd</b>
+                                    </i>
+                                </span>
+                                <span>
+                                    <i>
+                                        <b>Cars</b>
+                                    </i>
+                                </span>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="cars" t-as="car">
+                            <tr>
+                                <td>
+                                    <img t-att-src="image_data_uri(car.img)"
+                                         style="max-height:85pt;max-width:90%" alt="CAR"/>
+                                    <br/>
+                                    <i>
+                                        <t class="text-center" t-esc="car.name"/>
+                                    </i>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+    <template id="contacts_res_partner" name="Customer">
+        <t t-call="website.layout">
+            <div class="container">
+                <br/>
+                <center>
+                    <h3>Customer</h3>
+                </center>
+                <br/>
+                <div class="container">
+                    <table class="table table-bordered" style="table-layout: fixed" border="4">
+                        <tbody class="container">
+                            <tr>
+                                <td>
+                                    <div class="container">
+                                        <div class="oe_structure">
+                                            <div class="row">
+                                                <t t-foreach="contact" t-as="con">
+                                                    <div class="col">
+                                                        <div class="card"  style="width: 18rem;" >
+                                                            <img t-att-src="image_data_uri(con.avatar_128)"
+                                                                 style="max-height:150pt;max-width:80%"/>
+                                                            <br/>
+                                                            <h3><t t-esc="con.name"/></h3>
+                                                        </div>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+

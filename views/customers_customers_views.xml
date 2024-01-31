@@ -37,7 +37,7 @@
                             <field name="email" widget="email"/>
                             <field name="driver_name" attrs="{'invisible':
             [('driver','=',False)] }"/>
-                            <field name="cars_name_ids"/>
+                            <field name="cars_name_ids" widget="many2many_tags"/>
                         </group>
                     </group>
                     <h1>

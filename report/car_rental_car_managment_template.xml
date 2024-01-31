@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_car_rental_order_second_document">
+        <t t-call="web.external_layout">
+            <t t-set="address">
+                <div class="container">
+                    <div class="address">
+                        <t>Hertz Global Pvt.Ltd</t>
+                        <t>Report</t>
+                        <br/>
+                        <td>
+                            Gondal chokdi
+                            <br/>
+                            Hertz Global,Rajkot
+                            <br/>
+                            pin,256045
+                        </td>
+                    </div>
+                </div>
+            </t>
+            <div class="row mt-4 mb-4" id="informations">
+                <td>
+                    Name :
+                    <span t-field="doc.name"/>
+                    <br/>
+                    Avg :
+                    <span t-field="doc.avg"/>
+                    <br/>
+                    Speed :
+                    <span t-field="doc.speed"/>
+                    <br/>
+                    Rent :
+                    <span t-field="doc.rent"/>
+                    <br/>
+                    Type :
+                    <span t-field="doc.type"/>
+                    <br/>
+                </td>
+                <div class="col-auto col-3 mw-100 mb-2">
+                    <img t-att-src="image_data_uri(doc.img)"
+                         style="max-height:150pt;max-width:80%" alt="CAR" class="rounded float-end"/>
+                </div>
+            </div>
+
+            <div class="oe_title">
+                <b>Features : SmartPlay Studio ,LED Projector headlamps with DRLs ,Cruise Control ,Precision cut
+                    2
+                    tone alloy wheels
+                </b>
+            </div>
+        </t>
+    </template>
+    <template id="report_car_rental_second_order">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="car_Rental.report_car_rental_order_second_document"/>
+            </t>
+        </t>
+    </template>
+</odoo>

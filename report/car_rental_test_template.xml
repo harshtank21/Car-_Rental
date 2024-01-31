@@ -61,16 +61,22 @@
                 <thead style="display: table-row-group">
                     <tr>
                         <th name="th_description" class="text-start">Name</th>
-                        <th name="th_quantity" class="text-end">Type</th>
+                        <th name="th_quantity" class="text-center">Type</th>
                         <th name="th_priceunit" class="text-end">Rent</th>
                     </tr>
                 </thead>
-                <t t-set="current_subtotal" t-value="0"/>
-                <t t-foreach="car_ids" t-as="line">
-                    <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
+                <t t-set="cars" t-value="doc.car_ids"/>
+                <t t-foreach="cars" t-as="car">
+                    <tr>
                         <t>
-                            <td name="td_name">
-                                <span t-field="line.name"/>
+                            <td name="td_name" class="text-start">
+                                <span t-out="car.name"/>
+                            </td>
+                            <td name="td_type" class="text-center">
+                                <span t-out="car.type"/>
+                            </td>
+                            <td name="td_rent" class="text-end">
+                                <span t-out="car.rent"/>
                             </td>
                         </t>
                     </tr>

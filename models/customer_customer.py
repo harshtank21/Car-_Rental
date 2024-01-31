@@ -18,8 +18,7 @@ class CustomerCustomer(models.Model):
     licence_attach = fields.Binary(string="Licence Attach")
     identity = fields.Selection([("identity", "Identity"),
                                  ("pancard", "Pan card"),
-                                 ("voter id", "Voter id")],
-                                required=True, string="Identity")
+                                 ("voter id", "Voter id")], string="Identity")
     compny = fields.Char(string="namec")
     Identity_img = fields.Binary(string="Identity Attach")
     squ = fields.Char(string="squ", readonly=True)
@@ -96,7 +95,6 @@ class CustomerCustomer(models.Model):
 
     def write(self, vals):
         vals['compny'] = "Hertz Global Pvt.Ltd"
-        print(dir(self._fields["identity"]))
         selection = dict(self._fields["identity"].selection)
         if "identity" in vals:
             self.message_post(body=f'{selection[self.identity]} --> {selection[vals["identity"]]}')

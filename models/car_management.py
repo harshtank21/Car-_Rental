@@ -16,13 +16,12 @@ class CarManagement(models.Model):
                              ("convertible", "convertible"), ("Sports car", "Sports car"), ("luxurious", "Luxurious")],
                             string="Type")
     squ = fields.Char(string="squ", readonly=True)
-    invoice_id = fields.Many2one("customer.invoices",string="invoice")
-    customer_details_ids = fields.One2many("customer.customer", "car_details_id","DRIVER NAME")
+    invoice_id = fields.Many2one("customer.invoices", string="invoice")
+    customer_details_ids = fields.One2many("customer.customer", "car_details_id", "DRIVER NAME")
 
     @api.model
     def create(self, vals):
         vals['squ'] = self.env['ir.sequence'].next_by_code('my.sequence.code')
-        print(vals)
         vals["rental_name_one"] = "my cars"
         return super(CarManagement, self).create(vals)
 
@@ -50,3 +49,20 @@ class CarManagement(models.Model):
             recorde = self.search([("name", "=", rec.name), ("id", "!=", rec.id)])
             if recorde:
                 raise ValidationError('%s Already Exists In Car List.' % rec.name)
+
+    def open_wizard(self):
+        return {
+            'name': 'Customer Details',
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            "view_type": "form",
+            'res_model': 'customer.wizard',
+            'target': 'new',
+            'view_id': self.env.ref
+            ('car_Rental.customer_wizard_form_view').id,
+            'context': {'active_id': self.id},
+        }
+
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'

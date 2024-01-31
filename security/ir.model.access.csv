@@ -14,4 +14,5 @@ car_Rental.access_customer_detailes,access_customer_detailes,car_Rental.model_cu
 car_Rental.access_cleaning_ticket_create,access_cleaning_ticket_create,car_Rental.model_cleaning_ticket_create,base.group_user,1,1,1,1
 car_Rental.access_cleaning_maintenance,access_cleaning_maintenance,car_Rental.model_cleaning_maintenance,base.group_user,1,1,1,1
 car_Rental_administration.car_Rental_administration,access_finance_finance,car_Rental.model_finance_finance,base.group_user,1,1,1,1
-
+car_Rental.access_customer_wizard,access_customer_wizard,car_Rental.model_customer_wizard,base.group_user,1,1,1,1
+car_Rental.access_warning_wizard,access_warning_wizard,car_Rental.model_warning_wizard,base.group_user,1,1,1,1
