@@ -10,28 +10,43 @@ class CustomerInvoices(models.Model):
     name = fields.Many2one("customer.customer", string="Name", required=True)
     # GST_ID = fields.Char(string="GST_No ", releted="5442GFT29NE")
     ret = fields.Many2one("customer.customer", "ret")
-    address = fields.Char(string="Address", required=True)
+    address = fields.Char(string="Address",
+                          required=True)
     star_date = fields.Date(string="Star Date")
     end_date = fields.Date(string="End Date")
-    rent_time = fields.Integer(string="Rent Time", compute="_compute_rent_time", )
+    rent_time = fields.Integer(string="Rent Time",
+                               compute="_compute_rent_time", )
     rent = fields.Integer(string="Rant")
     # rent_time=fields.Integer(string="Rent Time")
     phone = fields.Char(string="phone")
     licence = fields.Char(string="Licence", required=True)
     licence_attach = fields.Binary(string="Licence Attach")
-    identity = fields.Selection([("identity", "Identity"), ("pancard", "Pan card"), ("voter id", "Voter id")],
+    identity = fields.Selection([("identity", "Identity"),
+                                 ("pancard", "Pan card"),
+                                 ("voter id", "Voter id")],
                                 required=True, string="Identity")
     Identity_img = fields.Binary(string="Identity Attach")
-    your_bill = fields.Integer(string="You Payable Amount", compute="_compute_your_bills")
+    your_bill = fields.Integer(string="You Payable Amount",
+                               compute="_compute_your_bills")
     gst = fields.Integer(string="gst", compute="_compute_your_gst", )
     # total = fields.Integer(string="TOTAL BILL", compute="_compute_your_total")
-    total = fields.Integer(string="TOTAL BILL", compute="_compute_your_driver", tracking=True, store=True)
-    payment = fields.Selection([("online", "Online"), ("offline", "Offline")])
-    car_ids = fields.One2many(comodel_name="car.management", inverse_name="invoice_id", string=" car")
+    total = fields.Integer(string="TOTAL BILL",
+                           compute="_compute_your_driver",
+                           tracking=True,
+                           store=True)
+    payment = fields.Selection([("online", "Online"),
+                                ("offline", "Offline")])
+    car_ids = fields.One2many(comodel_name="car.management",
+                              inverse_name="invoice_id",
+                              string=" car")
     in_driver = fields.Boolean(string="driver")
     driver = fields.Integer(string="indriveer", )
-    driver_name = fields.Many2one("driver.salary", string="Driver Name", )
-    the_day = fields.Integer(string="Date", compute="_compute_date", store=True)
+    driver_name = fields.Many2one("driver.salary",
+                                  string="Driver Name", )
+    other_order = fields.Integer(string="Other Order")
+    the_day = fields.Integer(string="Date",
+                             compute="_compute_date",
+                             store=True)
 
     # @api.depends("end_date")
     def _compute_rent_time(self):
@@ -53,7 +68,6 @@ class CustomerInvoices(models.Model):
     def _compute_your_gst(self):
         for rec in self:
             rec.gst = (rec.your_bill * 18) / 100
-
 
     @api.depends("in_driver")
     def _compute_your_driver(self):
@@ -88,3 +102,23 @@ class CustomerInvoices(models.Model):
 
     def driver_true(self):
         self.in_driver = True
+
+    def action_disable(self):
+        context = self.env.context
+        customer_id = context.get('active_ids')
+        two_list= customer_id.copy()
+        print(customer_id, "customer_id")
+        for rec in customer_id:
+            rec_customer = self.env['customer.invoices'].browse(rec)
+            for res in two_list:
+                if rec != res:
+                    res_customer = self.env['customer.invoices'].browse(res)
+                    if res_customer.name == rec_customer.name :
+                        rec_customer.write({
+                            'total' : rec_customer.total + res_customer.total
+                        })
+                        res_customer.unlink()
+                        two_list.remove(res)
+                        customer_id.remove(res)
+                        print('\n\n\n\n\n\n\n\n\n')
+

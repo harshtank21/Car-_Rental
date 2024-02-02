@@ -25,6 +25,7 @@ You could use this simplified accounting in case you work with an (external) acc
         'report/car_rental_order_report_template.xml',
         'report/car_rental_car_managment_template.xml',
         'report/car_rental_order_report.xml',
+        'report/customer_report.xml',
         'views/menu_views.xml',
         'views/offline_transaction_views.xml',
         'views/online_transaction_views.xml',

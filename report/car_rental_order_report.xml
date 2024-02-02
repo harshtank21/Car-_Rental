@@ -30,4 +30,14 @@
         <field name="binding_model_id" ref="model_customer_invoices"/>
         <field name="binding_type">report</field>
     </record>
+      <record id="action_report_car_rental_test" model="ir.actions.report">
+        <field name="name">Customer</field>
+        <field name="model">customer.customer</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">car_Rental.report_customer_order_template</field>
+        <field name="report_file">car_Rental.report_customer_order_template</field>
+        <field name="print_report_name"></field>
+        <field name="binding_model_id" ref="model_customer_customer"/>
+        <field name="binding_type">report</field>
+    </record>
 </odoo>
