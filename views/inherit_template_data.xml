@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="products_fiscal_posit" inherit_id="website_sale.products" priority="99" active="True">
+        <xpath expr="//div[starts-with(@t-cache, 'pricelist,products')]" position="before">
+            <div t-if="code" class="alert alert-primary">
+                    Due to covid we could not deliver this products
+            </div>
+        </xpath>
+    </template>
+    <template id="product_cus_text" inherit_id="website_sale.product" active="True" name="Terms in and Conditions"
+              priority="99">
+        <xpath expr="//a[@id='add_to_cart']" position="attributes">
+            <attribute name="t-if">code</attribute>
+        </xpath>
+    </template>
+    <template id="product_cus_text_two" inherit_id="car_Rental.cars" active="True" name="Terms in and Conditions"
+              priority="99">
+        <xpath expr="//th[@name='th_priceunit']" position="after">
+            <th name="driver_th">Driver</th>
+        </xpath>
+        <xpath expr="//td[@name='td_rent']" position="after">
+            <td name="td_cust"  class="new-bg-driver" >
+                <span t-out="customer"/>
+
+            </td>
+        </xpath>
+    </template>
+</odoo>
+

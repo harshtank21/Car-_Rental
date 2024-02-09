@@ -22,7 +22,7 @@ class SaleOrderWizad(models.TransientModel):
         for rec in customer:
             car_id = list(res.id for res in rec.cars_name_ids)
             cars = list(car for car in context if car in car_id)
-            if cars == []:
+            if not cars:
                 store.extend(cars)
             else:
                 old_order.append(rec.id)

@@ -24,22 +24,28 @@ from odoo.addons.website_sale.controllers.main import WebsiteSale
 
 
 class Cars(http.Controller):
-    @http.route('/car_Rental/cars', website=True, auth='public')
-    def cars(self, page=0, **kw):
-        cars = request.env['car.management'].sudo().search([('type', '=', 'hatchback')], limit=3)
-        customer = request.env['customer.customer'].sudo().search([])
-        return request.render("car_Rental.cars", {
+    def _get_additional_car_values(self, values):
+        return {}
+
+    @http.route('/cars', website=True, auth='public')
+    def cars(self, **kw):
+        cars = request.env['car.management'].sudo().search([])
+        values = {
             'cars': cars,
-            'customer': customer
-        })
+        }
+        values.update(self._get_additional_car_values(values))
+        return request.render("car_Rental.cars", values)
 
 
 class Contacts(http.Controller):
-    @http.route(['/contact', '/contact/<int:page>'], website=True, auth='public')
-    def contacts(self, page=0, **kw):
-        contact = request.env['res.partner'].search([])
+    @http.route(['/contact', '/contact/page/<int:page>'], typq='http', website=True, auth='public')
+    def contacts(self, page=0, search=''):
+        domain = []
+        if search:
+            domain = [('name', 'ilike', search)]
+        contact = request.env['res.partner'].search(domain)
         total = len(contact)
-        par_page = 10
+        par_page = 12
         pager = request.website.pager(
             url="/contact",
             url_args=None,
@@ -47,7 +53,7 @@ class Contacts(http.Controller):
             page=page,
             scope=2,
             step=par_page)
-        contact = request.env['res.partner'].sudo().search([], limit=par_page, offset=pager['offset'])
+        contact = request.env['res.partner'].sudo().search(domain, limit=par_page, offset=pager['offset'])
         return request.render("car_Rental.contacts_res_partner", {
             'contact': contact,
             'pager': pager
@@ -74,3 +80,17 @@ class Contacts(http.Controller):
     #     return request.render("car_Rental.contacts_res_partner_details", {
     #         'contact_id': details
     #     })
+
+
+class CarsWeb(http.Controller):
+    @http.route('/cars/webpage', website=True, auth='public')
+    def cars(self, **kw):
+        cars = request.env['car.management'].sudo().browse(41)
+        cars_png = request.env['car.management'].sudo().browse(42)
+        lux = request.env['car.management'].sudo().browse(29)
+        values = {
+            'cars': cars,
+            'cars_png':cars_png,
+            'lux':lux
+        }
+        return request.render("car_Rental.cars_webpage", values)

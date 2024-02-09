@@ -13,4 +13,5 @@ from . import myorder_order
 from . import driver_salary
 from . import online_transaction
 from . import costomer_detailes
+from . import res_config_settings
 

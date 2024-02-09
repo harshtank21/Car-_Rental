@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cars" name="Cars">
+        <t t-call="website.layout">
+            <center>
+                <table class="table table-striped">
+                    <!-- In case we want to repeat the header, remove "display: table-row-group" -->
+                    <thead style="display: table-row-group">
+                        <tr class="my-fonts" id="code_match">
+                            <th name="th_description" >Image</th>
+                            <th name="th_description" >Name</th>
+                            <th name="th_quantity" >Type</th>
+                            <th name="th_priceunit">Rent</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="cars" t-as="car">
+                        <tr>
+                            <t>
+                                <td name="td_IMG" >
+                                    <img t-att-src="image_data_uri(car.img)"
+                                         border="3pt solid black"
+                                         class="car-image"
+                                         style="max-height:80pt;max-width:150%"/>
+                                </td>
+                                <td name="td_name">
+                                    <span t-out="car.name" class="new-bg-name" />
+                                </td>
+                                <td name="td_type" >
+                                    <span t-out="car.type" class="new-bg-type" />
+                                </td>
+                                <td name="td_rent"  class="new-bg-rent">
+                                    <span t-out="car.rent"/>
+                                </td>
+                            </t>
+                        </tr>
+
+                    </t>
+                </table>
+            </center>
+        </t>
+    </template>
+</odoo>

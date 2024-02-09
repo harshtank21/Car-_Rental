@@ -1,46 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="cars" name="Cars">
-        <t t-call="website.layout">
-            <div class="container">
-                <table class="table table-bordered" style="table-layout: fixed">
-                    <thead>
-                        <tr>
-                            <td align="center" valign="center">
-                                <span>
-                                    <i>
-                                        <b>Hertz Global Pvt.Ltd</b>
-                                    </i>
-                                </span>
-                                <span>
-                                    <i>
-                                        <b>Cars</b>
-                                    </i>
-                                </span>
-                            </td>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <t t-foreach="cars" t-as="car">
-                            <tr>
-                                <td>
-                                    <img t-att-src="image_data_uri(car.img)"
-                                         style="max-height:85pt;max-width:90%" alt="CAR"/>
-                                    <br/>
-                                    <i>
-                                        <t class="text-center" t-esc="car.name"/>
-                                    </i>
-                                </td>
-                            </tr>
-                        </t>
-                    </tbody>
-                </table>
-            </div>
-        </t>
+    <template id="contacts_res_partner_search" name="Customer">
+        <from sction="/contact">
+            <t t-call="website.website_search_box">
+                <t t-set="action" t-value="'/contact'"/>
+            </t>
+        </from>
     </template>
+<!--    <template id="cars" name="Cars">-->
+<!--        <t t-call="website.layout">-->
+<!--            <t t-foreach="cars" t-as="car">-->
+<!--                <div class="container">-->
+<!--                    <div class="row align-items-center">-->
+<!--                        <div class="col-lg-6 pt16 pb16 o_colored_level">-->
+<!--                            <img t-att-src="image_data_uri(car.img)"-->
+<!--                                 border="3pt solid black"-->
+<!--                                 style="max-height:250pt;max-width:1550%"/>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6 pt16 pb16 o_colored_level">-->
+<!--                            <h2 class='o_default_snippet_text'>Name :-->
+<!--                                <t t-esc="car.name"/>-->
+<!--                            </h2>-->
+<!--                            <br/>-->
+<!--                            Speed :-->
+<!--                            <t t-esc="car.speed"/>-->
+<!--                            <br/>-->
+<!--                            Avg :-->
+<!--                            <t t-esc="car.avg"/>-->
+<!--                            <br/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </t>-->
+<!--            &lt;!&ndash;            <div class="container" id="hello_texst">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <table class="table table-bordered" style="table-layout: fixed">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <thead>&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;                            <td align="center" valign="center">&ndash;&gt;-->
+<!--            &lt;!&ndash;                                <span>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                    <i>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                        <b>Hertz Global Pvt.Ltd</b>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                    </i>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                </span>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                <span>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                    <i>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                        <b>Cars</b>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                    </i>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                </span>&ndash;&gt;-->
+<!--            &lt;!&ndash;                            </td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                        </tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    </thead>&ndash;&gt;-->
+
+<!--            &lt;!&ndash;                    <tbody>&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <t t-foreach="cars" t-as="car">&ndash;&gt;-->
+<!--            &lt;!&ndash;                            <tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                <td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                    <img t-att-src="image_data_uri(car.img)"&ndash;&gt;-->
+<!--            &lt;!&ndash;                                         style="max-height:85pt;max-width:90%" alt="CAR"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                    <br/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                    <i>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                        <t class="text-center" t-esc="car.name"/>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                    </i>&ndash;&gt;-->
+<!--            &lt;!&ndash;                                </td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                            </tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;                        </t>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    </tbody>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </table>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--        </t>-->
+<!--    </template>-->
     <template id="contacts_res_partner" name="Customer">
         <t t-call="website.layout">
+            <div>
+                <t t-call="car_Rental.contacts_res_partner_search">
+                </t>
+            </div>
             <div class="container">
                 <br/>
                 <center>
@@ -78,8 +112,10 @@
                     </table>
                 </div>
             </div>
-            <div class="o_cp_pager" role="search" t-ref="pager">
-                <t t-call="website.pager"/>
+            <div class="products_pager form-inline justify-content-center mt-3">
+                <t t-call="website.pager">
+                    <t t-set="_classes">mt-2 ml-md-2</t>
+                </t>
             </div>
         </t>
     </template>
@@ -152,5 +188,6 @@
             <!--            <br/>-->
         </t>
     </template>
+
 </odoo>
 

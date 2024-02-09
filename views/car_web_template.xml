@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cars_webpage" name="web_page">
+        <t t-call="website.layout">
+            <div class="carousel-item active pt152 pb152 oe_img_bg o_bg_img_center o_colored_level"
+                 style="background-image: url(https://cdn-www.enfocus.com/sites/default/files/media/images/appstore/product_screenshot/car_with_background_1.jpeg); min-height: 545.391px;"
+                 data-name="Slide">
+                <div class="container oe_unremovable">
+                    <div class="row content">
+                        <div class="carousel-content col-lg-6 o_colored_level">
+                            <h2>
+                                <font style="font-size: 62px;" class="o_default_snippet_text">Car Rental
+                                </font>
+                            </h2>
+                            <h5>
+                                <font style="font-size: 32px;" class="o_default_snippet_text">Fast and
+                                    Easy Way To Rent A Car
+                                </font>
+                            </h5>
+                            <p class="lead o_default_snippet_text">
+                                <font color='black'>A small river named Duden flows by their place and supplies it with
+                                    the necessary regelialia. It is a paradisematic country, in which roasted parts
+                                </font>
+                            </p>
+                            <p>
+                                <a href="/contactus" class="btn btn-primary mb-2 o_default_snippet_text">Contact us</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+        <template id="rental_product_snippets" inherit_id="website.snippets" priority="8">
+        <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="car_Rental.cars_webpage"/>
+        </xpath>
+    </template>
+
+    <!--    <record id="car_Rental._arousel_default_image_1" model="ir.attachment">-->
+    <!--            <field name="public" eval="True"/>-->
+    <!--            <field name="name">yuvraj-singh-tmAynVA_ihE-unsplash.jpg</field>-->
+    <!--            <field name="type">url</field>-->
+    <!--            <field name="url">/car_Rental/static/src/img/yuvraj-singh-tmAynVA_ihE-unsplash.jpg</field>-->
+    <!--        </record>-->
+</odoo>

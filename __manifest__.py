@@ -12,7 +12,7 @@ You could use this simplified accounting in case you work with an (external) acc
     """,
     'category': 'Accounting/Accounting',
     'website': 'https://www.odoo.com/app/invoicing',
-    'depends': ['base', 'mail', 'sale', 'contacts'],
+    'depends': ['base', 'mail', 'sale', 'contacts', 'website_sale'],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
@@ -27,6 +27,7 @@ You could use this simplified accounting in case you work with an (external) acc
         'report/car_rental_order_report.xml',
         'report/customer_report.xml',
         'views/menu_views.xml',
+        'views/car_web_template.xml',
         'views/offline_transaction_views.xml',
         'views/online_transaction_views.xml',
         'views/all_order_views.xml',
@@ -36,15 +37,21 @@ You could use this simplified accounting in case you work with an (external) acc
         'views/customers_customers_views.xml',
         'views/cars_management_views.xml',
         'views/customer_invoices_views.xml',
+        'views/inherit_template_data.xml',
         'views/cleaning_maintenance_views.xml',
         # 'views/cleaning_ticket_create_views.xml',
         'views/car_bills_views.xml',
+        'views/controllers_car_temp.xml',
         'views/web_template.xml',
         'views/finance_views.xml',
+        'views/res_config_settings_views.xml',
         'wizard/customer_wizard_views.xml',
         'wizard/warning_wizard_views.xml',
 
     ],
+    'assets': {
+        'web.assets_frontend': [
+            'car_Rental/static/src/scss/car_rental.scss', ]},
     'installable': True,
     'application': True,
     'license': 'LGPL-3',
