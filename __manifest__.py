@@ -33,6 +33,7 @@ You could use this simplified accounting in case you work with an (external) acc
         'views/all_order_views.xml',
         'views/avd_orders_views.xml',
         'views/running_order_views.xml',
+        'views/contect_car_views.xml',
         'views/driver_salary_views.xml',
         'views/customers_customers_views.xml',
         'views/cars_management_views.xml',
